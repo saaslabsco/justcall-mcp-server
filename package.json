@@ -1,0 +1,64 @@
+{
+  "name": "@justcall/mcp-server",
+  "description": "JustCall MCP Server",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "author": {
+    "name": "JustCall",
+    "url": "https://justcall.io"
+  },
+  "homepage": "https://github.com/saaslabsco/mcp-server#readme",
+  "repository": "https://github.com/saaslabsco/mcp-server",
+  "bugs": {
+    "url": "https://github.com/saaslabsco/mcp-server/issues"
+  },
+  "keywords": [
+    "justcall",
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "claude",
+    "voice-api",
+    "tool-calling"
+  ],
+  "bin": {
+    "@justcall/mcp-server": "dist/index.js"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc && shx chmod +x dist/*.js",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "dev:stdio-example": "tsx examples/stdio-client.ts",
+    "dev:sse-example": "tsx examples/sse-client.ts",
+    "dev:shttp-example": "tsx examples/shttp-client.ts",
+    "inspector": "mcp-inspector",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest src/tests/mcp-server-mock.test.ts",
+    "test:e2e": "NODE_OPTIONS=--experimental-vm-modules jest src/tests/mcp-server-e2e.test.ts"
+  },
+  "files": [
+    "dist",
+    "dist/**/*.d.ts",
+    "dist/**/*.d.ts.map"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.3",
+    "dotenv": "^16.4.7",
+    "zod": "^3.24.2",
+    "zod-to-json-schema": "^3.24.5"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/inspector": "^0.14.2",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.14.0",
+    "jest": "^29.7.0",
+    "shx": "^0.4.0",
+    "ts-jest": "^29.3.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "pnpm@10.15.0+sha512.486ebc259d3e999a4e8691ce03b5cac4a71cbeca39372a9b762cb500cfdf0873e2cb16abe3d951b1ee2cf012503f027b98b6584e4df22524e0c7450d9ec7aa7b"
+}

@@ -1,0 +1,63 @@
+{
+  "name": "@justcall/mcp-server",
+  "description": "JustCall MCP Server",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "src/index.ts",
+  "type": "module",
+  "author": {
+    "name": "JustCall",
+    "url": "https://justcall.io"
+  },
+  "homepage": "https://github.com/saaslabsco/justcall-mcp-server#readme",
+  "repository": "https://github.com/saaslabsco/justcall-mcp-server",
+  "bugs": {
+    "url": "https://github.com/saaslabsco/justcall-mcp-server/issues"
+  },
+  "keywords": [
+    "justcall",
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "claude",
+    "voice-api",
+    "tool-calling"
+  ],
+  "bin": {
+    "@justcall/mcp-server": "dist/index.js"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc && shx chmod +x dist/*.js",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "dev:stdio-example": "tsx examples/stdio-client.ts",
+    "dev:sse-example": "tsx examples/sse-client.ts",
+    "dev:shttp-example": "tsx examples/shttp-client.ts",
+    "inspector": "mcp-inspector"
+  },
+  "files": [
+    "dist",
+    "dist/**/*.d.ts",
+    "dist/**/*.d.ts.map"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.3",
+    "agents": "^0.2.8",
+    "axios": "^1.12.2",
+    "dotenv": "^16.4.7",
+    "rxjs": "^7.8.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/inspector": "^0.16.6",
+    "@types/node": "^22.14.0",
+    "shx": "^0.4.0",
+    "ts-jest": "^29.3.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "wrangler": "^4.42.0"
+  },
+  "packageManager": "pnpm@10.18.1"
+}

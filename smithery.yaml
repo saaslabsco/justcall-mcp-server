@@ -1,0 +1,39 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+runtime: "container"
+
+build:
+  dockerfile: "Dockerfile"
+  dockerBuildPath: "."
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - JUSTCALL_API_KEY
+      - JUSTCALL_API_SECRET
+    properties:
+      JUSTCALL_API_KEY:
+        type: string
+        default: ""
+        description: JustCall API key used for making API calls
+      JUSTCALL_API_SECRET:
+        type: string
+        default: ""
+        description: JustCall API secret used for making API calls
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['dist/index.js'],
+      env: {
+        JUSTCALL_API_KEY: config.JUSTCALL_API_KEY,
+        JUSTCALL_API_SECRET: config.JUSTCALL_API_SECRET
+      }
+    })
+  exampleConfig:
+    JUSTCALL_API_KEY: dummy_api_key_123
+    JUSTCALL_API_SECRET: dummy_api_secret_456

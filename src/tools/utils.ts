@@ -37,3 +37,19 @@ export function createToolHandler<T>(
     }
   };
 }
+
+/**
+ * Get the auth token from the context
+ * @param context - The context of the request
+ * @returns The auth token
+ */
+export function getAuthToken(context?: any): string {
+  const authHeader = context?.requestInfo?.headers.authorization;
+  const [apiKey, apiSecret] =
+    authHeader?.replace("Bearer ", "").split(":") || [];
+  const authToken =
+    apiKey && apiSecret
+      ? `${apiKey}:${apiSecret}`
+      : `${process.env.JUSTCALL_API_KEY}:${process.env.JUSTCALL_API_SECRET}`;
+  return authToken;
+}

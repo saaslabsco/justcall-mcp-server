@@ -1,16 +1,12 @@
-// Base DTO for common JustCall API parameters
-export interface BaseJustCallDto {
-  companyId?: number;
-  authToken?: string;
-}
+import { BaseJustCallDto } from "./base.js";
 
 // List Calls DTO
 export interface ListCallsDto extends BaseJustCallDto {
   fetch_queue_data?: boolean;
   from_datetime?: string; // yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format
   to_datetime?: string; // yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format
-  contact_number?: string;
-  justcall_number?: string;
+  contact_number?: number;
+  justcall_number?: number;
   agent_id?: number;
   ivr_digit?: number;
   call_direction?: "Incoming" | "Outgoing";
@@ -23,4 +19,24 @@ export interface ListCallsDto extends BaseJustCallDto {
   last_call_id_fetched?: number;
   call_traits?: string[];
   disposition_codes?: string[];
+}
+
+// Get Call DTO
+export interface GetCallDto extends BaseJustCallDto {
+  id: number;
+  fetch_queue_data?: boolean;
+  fetch_ai_data?: boolean;
+}
+
+// Update Call DTO
+export interface UpdateCallDto extends BaseJustCallDto {
+  id: number;
+  notes?: string;
+  disposition?: string;
+  rating?: number;
+}
+
+// Get Call Journey DTO
+export interface GetCallJourneyDto extends BaseJustCallDto {
+  id: number;
 }

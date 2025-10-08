@@ -3,6 +3,7 @@
 The JustCall [Model Context Protocol (MCP)](https://modelcontextprotocol.com/) Server lets Large Language Models (LLMs) and AI agents make real-world voice calls and send SMS directly through JustCall’s APIs — securely, contextually, and programmatically.
 
 It provides a function-calling interface for conversational AI systems, enabling:
+
 - 📞 AI-powered calling: Let your LLM initiate, manage, or transcribe calls using JustCall.
 - 💬 Smart messaging: Allow your AI agent to send or respond to SMS within conversations.
 - ⚙️ Seamless integration: Use the MCP standard to connect JustCall’s telephony capabilities with any LLM runtime or orchestration framework.

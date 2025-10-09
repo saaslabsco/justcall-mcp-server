@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 0.0.5
+
+### Patch Changes
+
+- fix: Correct user parameters according to the API
+
 ## 0.0.4
 
 ### Patch Changes

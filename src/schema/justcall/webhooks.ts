@@ -2,21 +2,67 @@ import z from "zod";
 
 // Webhook Schemas
 export const ListWebhooksSchema = {
-  status: z
-    .enum(["active", "inactive", "failed"])
+  type: z
+    .enum([
+      "call.completed",
+      "call.answered",
+      "call.initiated",
+      "call.incoming",
+      "call.updated",
+      "call.enters_queue",
+      "call.exits_queue",
+      "jc.call_ai_generated",
+      "call.voicemail",
+      "call.missed",
+      "call.ai_voice_agent",
+      "sms.sent_received",
+      "sms.sent",
+      "sms.received",
+      "sms.status_updated",
+      "sd.call_completed",
+      "sd.call_updated",
+      "sd.call_ai_generated",
+      "whatsapp.message_sent",
+      "whatsapp.message_received",
+      "whatsapp.message_status_updated",
+      "jc.contact_status_updated",
+      "appointment.scheduled",
+    ])
     .optional()
-    .describe("Filter webhooks by status"),
-  event_type: z.string().optional().describe("Filter webhooks by event type"),
-  page: z.number().optional().describe("Page number for pagination"),
-  per_page: z.number().optional().describe("Number of webhooks per page"),
+    .describe(
+      "Select a type to search for subscribed events of a specific type."
+    ),
 };
 
 export const CreateWebhookSchema = {
-  url: z.string().describe("Webhook URL endpoint"),
-  events: z.array(z.string()).describe("Array of event types to subscribe to"),
-  description: z.string().optional().describe("Description of the webhook"),
-  secret: z
+  webhook_url: z
     .string()
-    .optional()
-    .describe("Secret key for webhook signature verification"),
+    .describe("Configure the URL on which you want to receive the response."),
+  type: z
+    .enum([
+      "call.completed",
+      "call.answered",
+      "call.initiated",
+      "call.incoming",
+      "call.updated",
+      "call.enters_queue",
+      "call.exits_queue",
+      "jc.call_ai_generated",
+      "call.voicemail",
+      "call.missed",
+      "call.ai_voice_agent",
+      "sms.sent_received",
+      "sms.sent",
+      "sms.received",
+      "sms.status_updated",
+      "sd.call_completed",
+      "sd.call_updated",
+      "sd.call_ai_generated",
+      "whatsapp.message_sent",
+      "whatsapp.message_received",
+      "whatsapp.message_status_updated",
+      "jc.contact_status_updated",
+      "appointment.scheduled",
+    ])
+    .describe("Select an event type to add URL."),
 };

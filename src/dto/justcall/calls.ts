@@ -32,7 +32,7 @@ export interface GetCallDto extends BaseJustCallDto {
 export interface UpdateCallDto extends BaseJustCallDto {
   id: number;
   notes?: string;
-  disposition?: string;
+  disposition_code?: string;
   rating?: number;
 }
 

@@ -5,8 +5,6 @@ import {
   GetCallJourneyDto,
   ListUsersDto,
   GetUserDto,
-  CreateUserDto,
-  UpdateUserDto,
   ListContactsDto,
   GetContactDto,
   CreateContactDto,
@@ -21,10 +19,6 @@ import {
   ListWebhooksDto,
   CreateWebhookDto,
   // User Groups DTOs
-  ListUserGroupsDto,
-  GetUserGroupDto,
-  CreateUserGroupDto,
-  UpdateUserGroupDto,
   GetVoiceAgentDto,
   // SMS Tags DTOs
   ListSmsTagsDto,
@@ -149,32 +143,6 @@ export class JustCallApiService extends BaseApiService {
     return this.executeApiCall(url, { headers });
   }
 
-  createUser(dto: CreateUserDto): Promise<any> {
-    const { companyId, authToken, ...requestBody } = dto;
-
-    const url = `/v2.1/users`;
-    const headers = this.getAuthHeaders(authToken as string);
-
-    return this.executeApiCall(url, {
-      headers,
-      method: "POST",
-      data: requestBody,
-    });
-  }
-
-  updateUser(dto: UpdateUserDto): Promise<any> {
-    const { companyId, authToken, id, ...requestBody } = dto;
-
-    const url = `/v2.1/users/${id}`;
-    const headers = this.getAuthHeaders(authToken as string);
-
-    return this.executeApiCall(url, {
-      headers,
-      method: "PUT",
-      data: requestBody,
-    });
-  }
-
   // Contacts Endpoints
   listContacts(dto: ListContactsDto): Promise<any> {
     const { companyId, authToken, ...queryParams } = dto;
@@ -247,20 +215,13 @@ export class JustCallApiService extends BaseApiService {
   sendSms(dto: SendSmsDto): Promise<any> {
     const { companyId, authToken, ...requestBody } = dto;
 
-    // Transform field names to match JustCall API expectations
-    const transformedRequestBody = {
-      contact_number: requestBody.to,
-      justcall_number: requestBody.from,
-      body: requestBody.body,
-      media_urls: requestBody.media_urls,
-    };
     const url = `/v2.1/texts/new`;
     const headers = this.getAuthHeaders(authToken as string);
 
     return this.executeApiCall(url, {
       headers,
       method: "POST",
-      data: transformedRequestBody,
+      data: requestBody,
     });
   }
 
@@ -347,31 +308,6 @@ export class JustCallApiService extends BaseApiService {
   // IVR Endpoints
   // Conference Endpoints
   // Call Queue Endpoints
-  // User Groups Endpoints
-  listUserGroups(dto: ListUserGroupsDto): Promise<any> {
-    const { companyId, authToken, ...queryParams } = dto;
-
-    const params = Object.entries(queryParams)
-      .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
-
-    const url = `/v2.1/user_groups`;
-    const headers = this.getAuthHeaders(authToken as string);
-
-    return this.executeApiCall(url, { params, headers });
-  }
-
-  getUserGroup(dto: GetUserGroupDto): Promise<any> {
-    const { companyId, authToken, id } = dto;
-
-    const url = `/v2.1/user_groups/${id}`;
-    const headers = this.getAuthHeaders(authToken as string);
-
-    return this.executeApiCall(url, { headers });
-  }
 
   // SMS Tags Endpoints
   listSmsTags(dto: ListSmsTagsDto): Promise<any> {
@@ -400,13 +336,7 @@ export class JustCallApiService extends BaseApiService {
   }
 
   createSmsTag(dto: CreateSmsTagDto): Promise<any> {
-    const { companyId, authToken, color, ...requestBody } = dto;
-
-    // Transform color to color_code for the API
-    const apiRequestBody = {
-      ...requestBody,
-      color_code: color,
-    };
+    const { companyId, authToken, ...requestBody } = dto;
 
     const url = `/v2.1/texts/tags`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -414,7 +344,7 @@ export class JustCallApiService extends BaseApiService {
     return this.executeApiCall(url, {
       headers,
       method: "POST",
-      data: apiRequestBody,
+      data: requestBody,
     });
   }
 
@@ -445,33 +375,6 @@ export class JustCallApiService extends BaseApiService {
   // deleteRecording method removed per user request
 
   // Call Tags Endpoints
-
-  // Additional User Group Endpoints
-  createUserGroup(dto: CreateUserGroupDto): Promise<any> {
-    const { companyId, authToken, ...requestBody } = dto;
-
-    const url = `/v2.1/user_groups`;
-    const headers = this.getAuthHeaders(authToken as string);
-
-    return this.executeApiCall(url, {
-      headers,
-      method: "POST",
-      data: requestBody,
-    });
-  }
-
-  updateUserGroup(dto: UpdateUserGroupDto): Promise<any> {
-    const { companyId, authToken, id, ...requestBody } = dto;
-
-    const url = `/v2.1/user_groups/${id}`;
-    const headers = this.getAuthHeaders(authToken as string);
-
-    return this.executeApiCall(url, {
-      headers,
-      method: "PUT",
-      data: requestBody,
-    });
-  }
 
   // Agent Analytics Endpoints
   getAgentAnalytics(dto: GetAgentAnalyticsDto): Promise<any> {

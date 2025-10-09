@@ -15,5 +15,5 @@ export interface GetAccountAnalyticsDto extends BaseAnalyticsDto {}
 
 // Number Analytics DTOs (for /v2.1/calls/analytics/number endpoint)
 export interface GetNumberAnalyticsDto extends BaseAnalyticsDto {
-  justcall_number: number;
+  justcall_number?: string;
 }

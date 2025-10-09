@@ -4,18 +4,24 @@ import { BaseJustCallDto } from "./base.js";
 export interface ListSmsDto extends BaseJustCallDto {
   from_datetime?: string;
   to_datetime?: string;
+  last_sms_id_fetched?: number;
   contact_number?: string;
   justcall_number?: string;
-  direction?: "sent" | "received" | "failed";
+  sms_direction?: "incoming" | "outgoing";
+  sms_content?: string;
   page?: number;
   per_page?: number;
+  sort?: "id" | "datetime";
+  order?: string;
 }
 
 export interface SendSmsDto extends BaseJustCallDto {
-  from: string;
-  to: string;
+  contact_number: string;
+  justcall_number: string;
   body: string;
-  media_urls?: string[];
+  media_url?: string;
+  restrict_once?: "Yes" | "No";
+  schedule_at?: string;
 }
 
 export interface GetSmsDto extends BaseJustCallDto {
@@ -31,6 +37,7 @@ export interface CheckSmsReplyDto extends BaseJustCallDto {
 export interface ListSmsTagsDto extends BaseJustCallDto {
   page?: number;
   per_page?: number;
+  order?: "asc" | "desc";
 }
 
 export interface GetSmsTagDto extends BaseJustCallDto {
@@ -39,7 +46,8 @@ export interface GetSmsTagDto extends BaseJustCallDto {
 
 export interface CreateSmsTagDto extends BaseJustCallDto {
   name: string;
-  color: string;
+  color_code: string;
+  agent_id?: number;
 }
 
 export interface DeleteSmsTagDto extends BaseJustCallDto {

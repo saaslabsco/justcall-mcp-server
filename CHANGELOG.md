@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 0.0.4
+
+### Patch Changes
+
+- 37b3c39: Publish to MCP official registry and add server.json
+
 ## 0.0.3
 
 ### Patch Changes

@@ -33,6 +33,8 @@ import {
   DeleteSmsTagDto,
   // Analytics DTOs
   GetAgentAnalyticsDto,
+  GetAccountAnalyticsDto,
+  GetNumberAnalyticsDto,
 } from "../dto/justcall/index.js";
 import { BaseApiService } from "./base-api.js";
 import axios from "axios";
@@ -492,12 +494,49 @@ export class JustCallApiService extends BaseApiService {
   }
 
   /**
-   * Get voice agent data
-   * @param dto - GetVoiceAgentDto
+   * Get account analytics
+   * @param dto - GetAccountAnalyticsDto
    * @returns Promise<any>
    */
+  getAccountAnalytics(dto: GetAccountAnalyticsDto): Promise<any> {
+    const { authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value;
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/calls/analytics/account`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { headers, params });
+  }
+
+  getNumberAnalytics(dto: GetNumberAnalyticsDto): Promise<any> {
+    const { authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value;
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/calls/analytics/number`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { headers, params });
+  }
+
+  /**
+   * Get voice agent data
+   * @param dto
+   * @returns
+   */
   getVoiceAgentData(dto: GetVoiceAgentDto): Promise<any> {
-    const { companyId, authToken, id } = dto;
+    const { authToken, id } = dto;
 
     const url = `/v2.1/calls/${id}/voice-agent`;
     const headers = this.getAuthHeaders(authToken as string);

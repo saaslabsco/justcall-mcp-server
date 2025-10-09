@@ -10,6 +10,16 @@ It provides a function-calling interface for conversational AI systems, enabling
 
 In short: It gives your LLMs a voice and a phone number — turning chatbots into truly conversational agents.
 
+### 🧩 Prerequisites
+
+This project requires **Node.js** (which includes `npm` and `npx`).
+
+#### Installing Node.js
+
+* Visit the official Node.js website:
+  👉 [https://nodejs.org/en/download](https://nodejs.org/en/download)
+* Download and install the **LTS (Long-Term Support)** version for your platform (Windows, macOS, or Linux).
+
 ## Claude Desktop Setup
 
 1. Open `Claude Desktop` and press `CMD + ,` to go to `Settings`.

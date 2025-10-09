@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 0.0.6
+
+### Patch Changes
+
+- fix: Correct phone numbers and contacts update endpoint URLs
+
 ## 0.0.5
 
 ### Patch Changes

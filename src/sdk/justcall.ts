@@ -183,9 +183,9 @@ export class JustCallApiService extends BaseApiService {
   }
 
   updateContact(dto: UpdateContactDto): Promise<any> {
-    const { companyId, authToken, id, ...requestBody } = dto;
+    const { companyId, authToken, ...requestBody } = dto;
 
-    const url = `/v2.1/contacts/${id}`;
+    const url = `/v2.1/contacts`;
     const headers = this.getAuthHeaders(authToken as string);
 
     return this.executeApiCall(url, {
@@ -258,7 +258,7 @@ export class JustCallApiService extends BaseApiService {
         return acc;
       }, {} as Record<string, any>);
 
-    const url = `/v2.1/numbers`;
+    const url = `/v2.1/phone-numbers`;
     const headers = this.getAuthHeaders(authToken as string);
 
     return this.executeApiCall(url, { params, headers });
@@ -267,7 +267,7 @@ export class JustCallApiService extends BaseApiService {
   getNumber(dto: GetNumberDto): Promise<any> {
     const { companyId, authToken, id } = dto;
 
-    const url = `/v2.1/numbers/${id}`;
+    const url = `/v2.1/phone-numbers/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
 
     return this.executeApiCall(url, { headers });

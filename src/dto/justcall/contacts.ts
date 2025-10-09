@@ -2,12 +2,16 @@ import { BaseJustCallDto } from "./base.js";
 
 // Contacts DTOs
 export interface ListContactsDto extends BaseJustCallDto {
+  across_team?: boolean;
+  agent_ids?: number[];
   contact_number?: string;
   first_name?: string;
   last_name?: string;
+  status?: ("blacklist" | "dnd" | "dnm")[];
   per_page?: number;
   page?: number;
   order?: "asc" | "desc";
+  last_contact_id_fetched?: number;
 }
 
 export interface GetContactDto extends BaseJustCallDto {

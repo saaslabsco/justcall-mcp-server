@@ -18,6 +18,7 @@ export const GetNumberAnalyticsSchema = {
   from_date: z.string().describe("Start date (yyyy-mm-dd)"),
   to_date: z.string().describe("End date (yyyy-mm-dd)"),
   justcall_number: z
-    .number()
+    .string()
+    .optional()
     .describe("JustCall number for which the analytics are to be fetched."),
 };

@@ -16,9 +16,9 @@ This project requires **Node.js** (which includes `npm` and `npx`).
 
 #### Installing Node.js
 
-* Visit the official Node.js website:
+- Visit the official Node.js website:
   👉 [https://nodejs.org/en/download](https://nodejs.org/en/download)
-* Download and install the **LTS (Long-Term Support)** version for your platform (Windows, macOS, or Linux).
+- Download and install the **LTS (Long-Term Support)** version for your platform (Windows, macOS, or Linux).
 
 ## Claude Desktop Setup
 

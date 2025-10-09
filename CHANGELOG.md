@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 0.0.5
+
+### Patch Changes
+
+- fix: Align API parameters with JustCall Developer API specification
+
 ## 0.0.4
 
 ### Patch Changes

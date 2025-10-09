@@ -2,9 +2,27 @@ import z from "zod";
 
 // Contact Schemas
 export const ListContactsSchema = {
+  across_team: z
+    .boolean()
+    .optional()
+    .describe(
+      "Send 'true' to fetch all contacts for all the agents from your JustCall account. Default value will be 'false'."
+    ),
+  agent_ids: z
+    .array(z.number())
+    .optional()
+    .describe(
+      "Add a list of agent_ids to fetch contacts associated with multiple agents at once."
+    ),
   contact_number: z.string().optional().describe("Phone number of the contact"),
   first_name: z.string().optional().describe("First name of the contact"),
   last_name: z.string().optional().describe("Last name of the contact"),
+  status: z
+    .array(z.enum(["blacklist", "dnd", "dnm"]))
+    .optional()
+    .describe(
+      "Status of the contact from among the following - Blacklist, DND, DNM"
+    ),
   per_page: z
     .number()
     .optional()
@@ -22,6 +40,12 @@ export const ListContactsSchema = {
     .optional()
     .describe(
       "Order in which the contacts list should appear based on the 'id' of the contact. Recently added contacts are represented by larger 'id' values. Defaults to DESC (descending order)."
+    ),
+  last_contact_id_fetched: z
+    .number()
+    .optional()
+    .describe(
+      "Id of the last contact fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the `next_page_link` parameter."
     ),
 };
 

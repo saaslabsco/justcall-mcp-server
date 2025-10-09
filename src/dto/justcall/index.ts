@@ -22,8 +22,5 @@ export * from "./analytics.js";
 // Webhooks
 export * from "./webhooks.js";
 
-// User Groups
-export * from "./userGroups.js";
-
 // Voice Agent
 export * from "./voiceAgent.js";

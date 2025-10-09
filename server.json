@@ -1,0 +1,24 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "host.justcall.mcp/justcall-mcp-server",
+  "description": "JustCall MCP Server",
+  "repository": {
+    "url": "https://github.com/saaslabsco/justcall-mcp-server",
+    "source": "github"
+  },
+  "version": "0.0.4",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.justcall.host/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "API key and Secret for authentication in the format of <API_KEY>:<API_SECRET>",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

@@ -24,3 +24,15 @@ export * from "./webhooks.js";
 
 // Voice Agent
 export * from "./voiceAgent.js";
+
+// User Groups
+export * from "./userGroups.js";
+
+// Appointments
+export * from "./appointments.js";
+
+// WhatsApp
+export * from "./whatsapp.js";
+
+// AI
+export * from "./ai.js";

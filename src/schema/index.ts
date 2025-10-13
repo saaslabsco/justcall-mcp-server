@@ -22,5 +22,20 @@ export * from "./justcall/webhooks.js";
 // Number Schemas
 export * from "./justcall/numbers.js";
 
+// User Groups Schemas
+export * from "./justcall/userGroups.js";
+
+// Appointments Schemas
+export * from "./justcall/appointments.js";
+
+// WhatsApp Schemas
+export * from "./justcall/whatsapp.js";
+
+// AI Schemas
+export * from "./justcall/ai.js";
+
+// Voice Agent Schemas
+export * from "./justcall/voiceAgent.js";
+
 // SalesDialer Schemas
 export * from "./salesdialer/index.js";

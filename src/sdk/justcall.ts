@@ -5,14 +5,20 @@ import {
   GetCallJourneyDto,
   ListUsersDto,
   GetUserDto,
+  UpdateUserAvailabilityDto,
   ListContactsDto,
   GetContactDto,
   CreateContactDto,
   UpdateContactDto,
+  UpdateContactStatusDto,
+  AddContactsBlacklistDto,
   ListSmsDto,
   SendSmsDto,
   GetSmsDto,
   CheckSmsReplyDto,
+  ListSmsThreadsDto,
+  GetSmsThreadDto,
+  AddTagToThreadDto,
   ListNumbersDto,
   GetNumberDto,
   // Webhook DTOs
@@ -20,6 +26,8 @@ import {
   CreateWebhookDto,
   // User Groups DTOs
   GetVoiceAgentDto,
+  ListVoiceAgentsDto,
+  InitiateVoiceAgentCallDto,
   // SMS Tags DTOs
   ListSmsTagsDto,
   GetSmsTagDto,
@@ -29,6 +37,24 @@ import {
   GetAgentAnalyticsDto,
   GetAccountAnalyticsDto,
   GetNumberAnalyticsDto,
+  // User Groups DTOs
+  ListUserGroupsDto,
+  GetUserGroupDto,
+  // Appointments DTOs
+  ListAppointmentSlotsDto,
+  CreateAppointmentDto,
+  GetAppointmentDto,
+  // WhatsApp DTOs
+  ListWhatsAppMessagesDto,
+  GetWhatsAppMessageDto,
+  SendWhatsAppMessageDto,
+  ListWhatsAppTemplatesDto,
+  CheckWhatsAppReplyDto,
+  // AI DTOs
+  ListCallsAiDataDto,
+  GetCallAiDataDto,
+  ListMeetingsAiDataDto,
+  GetMeetingAiDataDto,
 } from "../dto/justcall/index.js";
 import { BaseApiService } from "./base-api.js";
 import axios from "axios";
@@ -117,7 +143,6 @@ export class JustCallApiService extends BaseApiService {
 
     return this.executeApiCall(url, { headers, context });
   }
-
   // Users/Agents Endpoints
   listUsers(dto: ListUsersDto & { context?: any }): Promise<any> {
     const { companyId, authToken, context, ...queryParams } = dto;
@@ -142,6 +167,19 @@ export class JustCallApiService extends BaseApiService {
     const headers = this.getAuthHeaders(authToken as string);
 
     return this.executeApiCall(url, { headers, context });
+  }
+
+  updateUserAvailability(dto: UpdateUserAvailabilityDto): Promise<any> {
+    const { companyId, authToken, ...requestBody } = dto;
+
+    const url = `/v2.1/users/availability`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "PUT",
+      data: requestBody,
+    });
   }
 
   // Contacts Endpoints
@@ -195,6 +233,32 @@ export class JustCallApiService extends BaseApiService {
       method: "PUT",
       data: requestBody,
       context,
+    });
+  }
+
+  updateContactStatus(dto: UpdateContactStatusDto): Promise<any> {
+    const { companyId, authToken, ...requestBody } = dto;
+
+    const url = `/v2.1/contacts/status`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "PUT",
+      data: requestBody,
+    });
+  }
+
+  addContactsBlacklist(dto: AddContactsBlacklistDto): Promise<any> {
+    const { companyId, authToken, ...requestBody } = dto;
+
+    const url = `/v2.1/contacts/bulk-add/blacklist`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "POST",
+      data: requestBody,
     });
   }
 
@@ -368,6 +432,52 @@ export class JustCallApiService extends BaseApiService {
     });
   }
 
+  // SMS Threads Endpoints
+  listSmsThreads(dto: ListSmsThreadsDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/texts/threads`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  getSmsThread(dto: GetSmsThreadDto): Promise<any> {
+    const { companyId, authToken, thread_id, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/texts/threads/${thread_id}`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  addTagToThread(dto: AddTagToThreadDto): Promise<any> {
+    const { companyId, authToken, ...requestBody } = dto;
+
+    const url = `/v2.1/texts/threads/tag`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "POST",
+      data: requestBody,
+    });
+  }
+
   // Additional Team Endpoints
   // deleteTeam method removed per user request
 
@@ -460,5 +570,266 @@ export class JustCallApiService extends BaseApiService {
     const headers = this.getAuthHeaders(authToken as string);
 
     return this.executeApiCall(url, { headers, context });
+  }
+
+  // Voice Agents Endpoints
+  listVoiceAgents(dto: ListVoiceAgentsDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/voice-agents/list`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers, context });
+  }
+
+  initiateVoiceAgentCall(
+    dto: InitiateVoiceAgentCallDto & { context?: any }
+  ): Promise<any> {
+    const { companyId, authToken, context, ...requestBody } = dto;
+
+    const url = `/v2.1/voice-agents/calls`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "POST",
+      data: requestBody,
+      context,
+    });
+  }
+
+  // User Groups Endpoints
+  listUserGroups(dto: ListUserGroupsDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/user_groups`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  getUserGroup(dto: GetUserGroupDto): Promise<any> {
+    const { companyId, authToken, id } = dto;
+
+    const url = `/v2.1/user_groups/${id}`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { headers });
+  }
+
+  // Appointments Endpoints
+  listAppointmentSlots(dto: ListAppointmentSlotsDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/appointments/available-slots`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  createAppointment(dto: CreateAppointmentDto): Promise<any> {
+    const { companyId, authToken, ...requestBody } = dto;
+
+    const url = `/v2.1/appointments`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "POST",
+      data: requestBody,
+    });
+  }
+
+  getAppointment(dto: GetAppointmentDto): Promise<any> {
+    const { companyId, authToken, id } = dto;
+
+    const url = `/v2.1/appointments/${id}`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { headers });
+  }
+
+  // WhatsApp Endpoints
+  listWhatsAppMessages(dto: ListWhatsAppMessagesDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        if (Array.isArray(value)) {
+          acc[key] = value;
+        } else {
+          acc[key] = value.toString();
+        }
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/whatsapp/messages`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  getWhatsAppMessage(dto: GetWhatsAppMessageDto): Promise<any> {
+    const { companyId, authToken, id, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/whatsapp/messages/${id}`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  sendWhatsAppMessage(dto: SendWhatsAppMessageDto): Promise<any> {
+    const { companyId, authToken, ...requestBody } = dto;
+
+    const url = `/v2.1/whatsapp/messages/send`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "POST",
+      data: requestBody,
+    });
+  }
+
+  listWhatsAppTemplates(dto: ListWhatsAppTemplatesDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/whatsapp/messages/templates`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  checkWhatsAppReply(dto: CheckWhatsAppReplyDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/whatsapp/messages/check-reply`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  // JustCall AI Endpoints
+  listCallsAiData(dto: ListCallsAiDataDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        if (typeof value === "boolean") {
+          acc[key] = value.toString();
+        } else if (Array.isArray(value)) {
+          acc[key] = value;
+        } else {
+          acc[key] = value.toString();
+        }
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/calls_ai`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  getCallAiData(dto: GetCallAiDataDto): Promise<any> {
+    const { companyId, authToken, id, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        if (typeof value === "boolean") {
+          acc[key] = value.toString();
+        } else {
+          acc[key] = value.toString();
+        }
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/calls_ai/${id}`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  listMeetingsAiData(dto: ListMeetingsAiDataDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        if (typeof value === "boolean") {
+          acc[key] = value.toString();
+        } else if (Array.isArray(value)) {
+          acc[key] = value;
+        } else {
+          acc[key] = value.toString();
+        }
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/meetings_ai`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  getMeetingAiData(dto: GetMeetingAiDataDto): Promise<any> {
+    const { companyId, authToken, instance_sid, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = String(value);
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/meetings_ai/${instance_sid}`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
   }
 }

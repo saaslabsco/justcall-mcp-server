@@ -7,6 +7,8 @@ import {
   GetCampaignSchema,
   CreateCampaignSchema,
   UpdateCampaignSchema,
+  ListCampaignContactsSchema,
+  AddContactToCampaignSchema,
 } from "../../schema/salesdialer/index.js";
 
 export const registerCampaignTools = (server: McpServer) => {
@@ -67,6 +69,34 @@ export const registerCampaignTools = (server: McpServer) => {
       return salesdialerAPIservice.updateCampaign({
         authToken,
         context,
+        ...params,
+      });
+    })
+  );
+
+  // List Campaign Contacts Tool
+  server.tool(
+    "list_salesdialer_campaign_contacts",
+    "Retrieve all contacts in a specific Sales Dialer campaign identified by Campaign ID",
+    ListCampaignContactsSchema,
+    createToolHandler(async (params, context) => {
+      const authToken = getAuthToken(context);
+      return salesdialerAPIservice.listCampaignContacts({
+        authToken,
+        ...params,
+      });
+    })
+  );
+
+  // Add Contact to Campaign Tool
+  server.tool(
+    "add_salesdialer_campaign_contact",
+    "Add contact to a specific Sales Dialer campaign identified by Campaign ID",
+    AddContactToCampaignSchema,
+    createToolHandler(async (params, context) => {
+      const authToken = getAuthToken(context);
+      return salesdialerAPIservice.addContactToCampaign({
+        authToken,
         ...params,
       });
     })

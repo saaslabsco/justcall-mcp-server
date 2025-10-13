@@ -1,4 +1,5 @@
 import { BaseSalesDialerDto } from "./base.js";
+import { CustomFieldDto } from "./contacts.js";
 
 // Campaign DTOs
 export interface ListCampaignsDto extends BaseSalesDialerDto {
@@ -45,4 +46,26 @@ export interface UpdateCampaignDto extends BaseSalesDialerDto {
   call_scripts?: string;
   voicemail_message_id?: number;
   abandoning_message_id?: number;
+}
+
+// Campaign Contacts DTOs
+export interface ListCampaignContactsDto extends BaseSalesDialerDto {
+  campaign_id: number;
+  contact_status?: "Active" | "Invalid" | "DNCA";
+  progress_status?: "Dialed" | "Skipped" | "Undialed";
+  per_page?: number;
+  page?: number;
+  order?: "asc" | "desc";
+}
+
+export interface AddContactToCampaignDto extends BaseSalesDialerDto {
+  campaign_id: number;
+  contact_id?: number;
+  phone_number?: string;
+  name?: string;
+  email?: string;
+  birthday?: string;
+  occupation?: string;
+  address?: string;
+  custom_fields?: CustomFieldDto[];
 }

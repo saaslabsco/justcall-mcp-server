@@ -2,36 +2,37 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 import { createToolHandler, getAuthToken } from "../utils.js";
 import { JustCallApiService } from "../../sdk/justcall.js";
-import { ListNumbersSchema, GetNumberSchema } from "../../schema/index.js";
+import {
+  ListUserGroupsSchema,
+  GetUserGroupSchema,
+} from "../../schema/index.js";
 
-export const registerNumberTools = (server: McpServer) => {
+export const registerUserGroupTools = (server: McpServer) => {
   const justcallAPIservice = new JustCallApiService();
 
-  // List Numbers Tool
+  // List User Groups Tool
   server.tool(
-    "list_numbers",
-    "Retrieve all phone numbers associated with the JustCall account",
-    ListNumbersSchema,
+    "list_user_groups",
+    "Retrieve all user groups defined in the JustCall account",
+    ListUserGroupsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
-      return justcallAPIservice.listNumbers({
+      return justcallAPIservice.listUserGroups({
         authToken,
-        context,
         ...params,
       });
     })
   );
 
-  // Get Number Tool
+  // Get User Group Tool
   server.tool(
-    "get_number",
-    "Retrieve detailed information for a specific phone number by ID",
-    GetNumberSchema,
+    "get_user_group",
+    "Retrieve detailed information for a specific user group by ID",
+    GetUserGroupSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
-      return justcallAPIservice.getNumber({
+      return justcallAPIservice.getUserGroup({
         authToken,
-        context,
         ...params,
       });
     })

@@ -7,6 +7,8 @@ import {
   GetCampaignSchema,
   CreateCampaignSchema,
   UpdateCampaignSchema,
+  ListCampaignContactsSchema,
+  AddContactToCampaignSchema,
 } from "../../schema/salesdialer/index.js";
 
 export const registerCampaignTools = (server: McpServer) => {
@@ -14,8 +16,8 @@ export const registerCampaignTools = (server: McpServer) => {
 
   // List Campaigns Tool
   server.tool(
-    "list_campaigns",
-    "Retrieve all sales dialer campaigns",
+    "list_salesdialer_campaigns",
+    "Retrieve all Sales Dialer campaigns in the JustCall account",
     ListCampaignsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -29,8 +31,8 @@ export const registerCampaignTools = (server: McpServer) => {
 
   // Get Campaign Tool
   server.tool(
-    "get_campaign",
-    "Retrieve detailed information for a specific sales dialer campaign",
+    "get_salesdialer_campaign",
+    "Retrieve detailed information for a specific Sales Dialer campaign by ID",
     GetCampaignSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -44,8 +46,8 @@ export const registerCampaignTools = (server: McpServer) => {
 
   // Create Campaign Tool
   server.tool(
-    "create_campaign",
-    "Create a new sales dialer campaign",
+    "create_salesdialer_campaign",
+    "Create a new Sales Dialer campaign in the JustCall account",
     CreateCampaignSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -59,14 +61,42 @@ export const registerCampaignTools = (server: McpServer) => {
 
   // Update Campaign Tool
   server.tool(
-    "update_campaign",
-    "Update campaign details including name, description, status, and assignments",
+    "update_salesdialer_campaign",
+    "Update/modify details of an existing Sales Dialer campaign in the JustCall account",
     UpdateCampaignSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.updateCampaign({
         authToken,
         context,
+        ...params,
+      });
+    })
+  );
+
+  // List Campaign Contacts Tool
+  server.tool(
+    "list_salesdialer_campaign_contacts",
+    "Retrieve all contacts in a specific Sales Dialer campaign identified by Campaign ID",
+    ListCampaignContactsSchema,
+    createToolHandler(async (params, context) => {
+      const authToken = getAuthToken(context);
+      return salesdialerAPIservice.listCampaignContacts({
+        authToken,
+        ...params,
+      });
+    })
+  );
+
+  // Add Contact to Campaign Tool
+  server.tool(
+    "add_salesdialer_campaign_contact",
+    "Add contact to a specific Sales Dialer campaign identified by Campaign ID",
+    AddContactToCampaignSchema,
+    createToolHandler(async (params, context) => {
+      const authToken = getAuthToken(context);
+      return salesdialerAPIservice.addContactToCampaign({
+        authToken,
         ...params,
       });
     })

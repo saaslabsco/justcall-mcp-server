@@ -9,8 +9,8 @@ export const registerSalesDialerAnalyticsTools = (server: McpServer) => {
 
   // Get Sales Dialer Analytics Tool
   server.tool(
-    "get_sales_dialer_analytics",
-    "Retrieve comprehensive analytics data for sales dialer campaigns",
+    "get_salesdialer_agent_analytics",
+    "Retrieve call performance analytics of a specific agent for a Sales Dialer campaign",
     GetSalesDialerAnalyticsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

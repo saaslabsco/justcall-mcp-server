@@ -20,6 +20,7 @@ export const registerAnalyticsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getAgentAnalytics({
         authToken,
+        context,
         ...params,
       });
     })
@@ -34,6 +35,7 @@ export const registerAnalyticsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getAccountAnalytics({
         authToken,
+        context,
         ...params,
       });
     })
@@ -48,6 +50,7 @@ export const registerAnalyticsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getNumberAnalytics({
         authToken,
+        context,
         ...params,
       });
     })

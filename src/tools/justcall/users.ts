@@ -16,6 +16,7 @@ export const registerUserTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listUsers({
         authToken,
+        context,
         ...params,
       });
     })
@@ -30,6 +31,7 @@ export const registerUserTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getUser({
         authToken,
+        context,
         ...params,
       });
     })

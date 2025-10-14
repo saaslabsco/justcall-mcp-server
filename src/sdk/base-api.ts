@@ -1,9 +1,39 @@
 import { Axios, AxiosResponse } from "axios";
+import * as packageJson from "../../package.json";
 
+const version = packageJson.default.version;
 export abstract class BaseApiService {
+  private readonly SERVER_NAME = "JustCall-MCP-Server";
+
   constructor(protected readonly httpService: Axios) {}
 
   protected abstract getServiceName(): string;
+
+  /**
+   * Build a user-agent string that includes both server and client information
+   * @param context - The context from the MCP request
+   * @returns The user-agent string
+   */
+  protected buildUserAgent(context?: any): string {
+    // Try to get client info from MCP protocol
+    const clientInfo = context?.meta?.clientInfo || context?.clientInfo;
+
+    if (clientInfo) {
+      const clientString = clientInfo.version
+        ? `${clientInfo.name}/${clientInfo.version}`
+        : clientInfo.name;
+      return `${this.SERVER_NAME}/${version} (Client: ${clientString})`;
+    }
+
+    // Fallback: Try to detect from user-agent header
+    const userAgent = context?.requestInfo?.headers?.["user-agent"];
+    if (userAgent) {
+      return `${this.SERVER_NAME}/${version} (Client: ${userAgent})`;
+    }
+
+    // Default fallback
+    return `${this.SERVER_NAME}/${version}`;
+  }
 
   protected async executeApiCall<T>(
     url: string,
@@ -12,12 +42,16 @@ export abstract class BaseApiService {
       headers?: Record<string, any>;
       method?: "GET" | "POST" | "PUT" | "DELETE";
       data?: any;
+      context?: any; // MCP context for client identification
     }
   ): Promise<T> {
     const method = options?.method || "GET";
     const httpOptions = {
       params: options?.params,
-      headers: options?.headers,
+      headers: {
+        ...options?.headers,
+        "x-justcall-client": this.buildUserAgent(options?.context),
+      },
       timeout: 60000, // 1 minute fallback timeout
     };
 

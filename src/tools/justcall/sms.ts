@@ -25,6 +25,7 @@ export const registerSmsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.sendSms({
         authToken,
+        context,
         ...params,
       });
     })
@@ -39,6 +40,7 @@ export const registerSmsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listSms({
         authToken,
+        context,
         ...params,
       });
     })
@@ -53,6 +55,7 @@ export const registerSmsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getSms({
         authToken,
+        context,
         ...params,
       });
     })
@@ -67,6 +70,7 @@ export const registerSmsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.checkSmsReply({
         authToken,
+        context,
         ...params,
       });
     })
@@ -81,6 +85,7 @@ export const registerSmsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listSmsTags({
         authToken,
+        context,
         ...params,
       });
     })
@@ -95,6 +100,7 @@ export const registerSmsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getSmsTag({
         authToken,
+        context,
         ...params,
       });
     })
@@ -109,6 +115,7 @@ export const registerSmsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.createSmsTag({
         authToken,
+        context,
         ...params,
       });
     })
@@ -123,6 +130,7 @@ export const registerSmsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.deleteSmsTag({
         authToken,
+        context,
         ...params,
       });
     })

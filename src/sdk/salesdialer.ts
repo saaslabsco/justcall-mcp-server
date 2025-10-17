@@ -33,8 +33,10 @@ export class SalesDialerApiService extends BaseApiService {
   }
 
   // Sales Dialer Analytics Endpoint
-  getSalesDialerAnalytics(dto: GetSalesDialerAnalyticsDto): Promise<any> {
-    const { companyId, authToken, ...queryParams } = dto;
+  getSalesDialerAnalytics(
+    dto: GetSalesDialerAnalyticsDto & { context?: any }
+  ): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -50,12 +52,12 @@ export class SalesDialerApiService extends BaseApiService {
     const url = `/v2.1/sales_dialer/analytics`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { params, headers });
+    return this.executeApiCall(url, { params, headers, context });
   }
 
   // Campaign Endpoints
-  listCampaigns(dto: ListCampaignsDto): Promise<any> {
-    const { companyId, authToken, ...queryParams } = dto;
+  listCampaigns(dto: ListCampaignsDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -67,20 +69,20 @@ export class SalesDialerApiService extends BaseApiService {
     const url = `/v2.1/sales_dialer/campaigns`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { params, headers });
+    return this.executeApiCall(url, { params, headers, context });
   }
 
-  getCampaign(dto: GetCampaignDto): Promise<any> {
-    const { companyId, authToken, id } = dto;
+  getCampaign(dto: GetCampaignDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, id, context } = dto;
 
     const url = `/v2.1/sales_dialer/campaigns/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { headers });
+    return this.executeApiCall(url, { headers, context });
   }
 
-  createCampaign(dto: CreateCampaignDto): Promise<any> {
-    const { companyId, authToken, ...requestBody } = dto;
+  createCampaign(dto: CreateCampaignDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...requestBody } = dto;
 
     const url = `/v2.1/sales_dialer/campaigns`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -89,11 +91,12 @@ export class SalesDialerApiService extends BaseApiService {
       headers,
       method: "POST",
       data: requestBody,
+      context,
     });
   }
 
-  updateCampaign(dto: UpdateCampaignDto): Promise<any> {
-    const { companyId, authToken, id, ...requestBody } = dto;
+  updateCampaign(dto: UpdateCampaignDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, id, context, ...requestBody } = dto;
 
     const url = `/v2.1/sales_dialer/campaigns/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -102,6 +105,7 @@ export class SalesDialerApiService extends BaseApiService {
       headers,
       method: "PUT",
       data: requestBody,
+      context,
     });
   }
 }

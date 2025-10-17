@@ -16,6 +16,7 @@ export const registerSalesDialerAnalyticsTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.getSalesDialerAnalytics({
         authToken,
+        context,
         ...params,
       });
     })

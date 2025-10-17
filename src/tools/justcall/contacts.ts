@@ -16,6 +16,7 @@ export const registerContactTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listContacts({
         authToken,
+        context,
         ...params,
       });
     })
@@ -30,6 +31,7 @@ export const registerContactTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.createContact({
         authToken,
+        context,
         ...params,
       });
     })

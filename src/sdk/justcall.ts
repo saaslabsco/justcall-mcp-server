@@ -58,8 +58,8 @@ export class JustCallApiService extends BaseApiService {
   }
 
   // Calls Endpoints
-  listCalls(dto: ListCallsDto): Promise<any> {
-    const { authToken, ...queryParams } = dto;
+  listCalls(dto: ListCallsDto & { context?: any }): Promise<any> {
+    const { authToken, context, ...queryParams } = dto;
 
     // Build query parameters
     const params = Object.entries(queryParams)
@@ -76,11 +76,11 @@ export class JustCallApiService extends BaseApiService {
     const url = `/v2.1/calls`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { params, headers });
+    return this.executeApiCall(url, { params, headers, context });
   }
 
-  getCall(dto: GetCallDto): Promise<any> {
-    const { companyId, authToken, id, ...queryParams } = dto;
+  getCall(dto: GetCallDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, id, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -92,11 +92,11 @@ export class JustCallApiService extends BaseApiService {
     const url = `/v2.1/calls/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { params, headers });
+    return this.executeApiCall(url, { params, headers, context });
   }
 
-  updateCall(dto: UpdateCallDto): Promise<any> {
-    const { companyId, authToken, id, ...requestBody } = dto;
+  updateCall(dto: UpdateCallDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, id, ...requestBody } = dto;
 
     const url = `/v2.1/calls/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -105,21 +105,22 @@ export class JustCallApiService extends BaseApiService {
       headers,
       method: "PUT",
       data: requestBody,
+      context,
     });
   }
 
-  getCallJourney(dto: GetCallJourneyDto): Promise<any> {
-    const { companyId, authToken, id } = dto;
+  getCallJourney(dto: GetCallJourneyDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, id } = dto;
 
     const url = `/v2.1/calls/${id}/journey`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { headers });
+    return this.executeApiCall(url, { headers, context });
   }
 
   // Users/Agents Endpoints
-  listUsers(dto: ListUsersDto): Promise<any> {
-    const { companyId, authToken, ...queryParams } = dto;
+  listUsers(dto: ListUsersDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -131,21 +132,21 @@ export class JustCallApiService extends BaseApiService {
     const url = `/v2.1/users`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { params, headers });
+    return this.executeApiCall(url, { params, headers, context });
   }
 
-  getUser(dto: GetUserDto): Promise<any> {
-    const { companyId, authToken, id } = dto;
+  getUser(dto: GetUserDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, id, context } = dto;
 
     const url = `/v2.1/users/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { headers });
+    return this.executeApiCall(url, { headers, context });
   }
 
   // Contacts Endpoints
-  listContacts(dto: ListContactsDto): Promise<any> {
-    const { companyId, authToken, ...queryParams } = dto;
+  listContacts(dto: ListContactsDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -157,20 +158,20 @@ export class JustCallApiService extends BaseApiService {
     const url = `/v2.1/contacts`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { params, headers });
+    return this.executeApiCall(url, { params, headers, context });
   }
 
-  getContact(dto: GetContactDto): Promise<any> {
-    const { authToken, id } = dto;
+  getContact(dto: GetContactDto & { context?: any }): Promise<any> {
+    const { authToken, id, context } = dto;
 
     const url = `/v2.1/contacts/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { headers });
+    return this.executeApiCall(url, { headers, context });
   }
 
-  createContact(dto: CreateContactDto): Promise<any> {
-    const { companyId, authToken, ...requestBody } = dto;
+  createContact(dto: CreateContactDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...requestBody } = dto;
 
     const url = `/v2.1/contacts`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -179,11 +180,12 @@ export class JustCallApiService extends BaseApiService {
       headers,
       method: "POST",
       data: requestBody,
+      context,
     });
   }
 
-  updateContact(dto: UpdateContactDto): Promise<any> {
-    const { companyId, authToken, ...requestBody } = dto;
+  updateContact(dto: UpdateContactDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...requestBody } = dto;
 
     const url = `/v2.1/contacts`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -192,12 +194,13 @@ export class JustCallApiService extends BaseApiService {
       headers,
       method: "PUT",
       data: requestBody,
+      context,
     });
   }
 
   // SMS/Text Messages Endpoints
-  listSms(dto: ListSmsDto): Promise<any> {
-    const { companyId, authToken, ...queryParams } = dto;
+  listSms(dto: ListSmsDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -209,11 +212,11 @@ export class JustCallApiService extends BaseApiService {
     const url = `/v2.1/texts`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { params, headers });
+    return this.executeApiCall(url, { params, headers, context });
   }
 
-  sendSms(dto: SendSmsDto): Promise<any> {
-    const { companyId, authToken, ...requestBody } = dto;
+  sendSms(dto: SendSmsDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...requestBody } = dto;
 
     const url = `/v2.1/texts/new`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -222,20 +225,21 @@ export class JustCallApiService extends BaseApiService {
       headers,
       method: "POST",
       data: requestBody,
+      context,
     });
   }
 
-  getSms(dto: GetSmsDto): Promise<any> {
-    const { companyId, authToken, id } = dto;
+  getSms(dto: GetSmsDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, id, context } = dto;
 
     const url = `/v2.1/texts/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { headers });
+    return this.executeApiCall(url, { headers, context });
   }
 
-  checkSmsReply(dto: CheckSmsReplyDto): Promise<any> {
-    const { companyId, authToken, ...bodyParams } = dto;
+  checkSmsReply(dto: CheckSmsReplyDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...bodyParams } = dto;
 
     const url = `/v2.1/texts/checkreply`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -244,12 +248,13 @@ export class JustCallApiService extends BaseApiService {
       method: "POST",
       headers,
       data: bodyParams,
+      context,
     });
   }
 
   // Numbers Endpoints
-  listNumbers(dto: ListNumbersDto): Promise<any> {
-    const { companyId, authToken, ...queryParams } = dto;
+  listNumbers(dto: ListNumbersDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -261,22 +266,22 @@ export class JustCallApiService extends BaseApiService {
     const url = `/v2.1/phone-numbers`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { params, headers });
+    return this.executeApiCall(url, { params, headers, context });
   }
 
-  getNumber(dto: GetNumberDto): Promise<any> {
-    const { companyId, authToken, id } = dto;
+  getNumber(dto: GetNumberDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, id, context } = dto;
 
     const url = `/v2.1/phone-numbers/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { headers });
+    return this.executeApiCall(url, { headers, context });
   }
 
   // Teams Endpoints
   // Webhook Endpoints
-  listWebhooks(dto: ListWebhooksDto): Promise<any> {
-    const { companyId, authToken, ...queryParams } = dto;
+  listWebhooks(dto: ListWebhooksDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -288,11 +293,11 @@ export class JustCallApiService extends BaseApiService {
     const url = `/v2.1/webhooks`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { params, headers });
+    return this.executeApiCall(url, { params, headers, context });
   }
 
-  createWebhook(dto: CreateWebhookDto): Promise<any> {
-    const { companyId, authToken, ...requestBody } = dto;
+  createWebhook(dto: CreateWebhookDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...requestBody } = dto;
 
     const url = `/v2.1/webhooks`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -301,6 +306,7 @@ export class JustCallApiService extends BaseApiService {
       headers,
       method: "POST",
       data: requestBody,
+      context,
     });
   }
 
@@ -310,8 +316,8 @@ export class JustCallApiService extends BaseApiService {
   // Call Queue Endpoints
 
   // SMS Tags Endpoints
-  listSmsTags(dto: ListSmsTagsDto): Promise<any> {
-    const { companyId, authToken, ...queryParams } = dto;
+  listSmsTags(dto: ListSmsTagsDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -323,20 +329,20 @@ export class JustCallApiService extends BaseApiService {
     const url = `/v2.1/texts/tags`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { params, headers });
+    return this.executeApiCall(url, { params, headers, context });
   }
 
-  getSmsTag(dto: GetSmsTagDto): Promise<any> {
-    const { companyId, authToken, id } = dto;
+  getSmsTag(dto: GetSmsTagDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, id, context } = dto;
 
     const url = `/v2.1/texts/tags/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { headers });
+    return this.executeApiCall(url, { headers, context });
   }
 
-  createSmsTag(dto: CreateSmsTagDto): Promise<any> {
-    const { companyId, authToken, ...requestBody } = dto;
+  createSmsTag(dto: CreateSmsTagDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, context, ...requestBody } = dto;
 
     const url = `/v2.1/texts/tags`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -345,11 +351,12 @@ export class JustCallApiService extends BaseApiService {
       headers,
       method: "POST",
       data: requestBody,
+      context,
     });
   }
 
-  deleteSmsTag(dto: DeleteSmsTagDto): Promise<any> {
-    const { companyId, authToken, id } = dto;
+  deleteSmsTag(dto: DeleteSmsTagDto & { context?: any }): Promise<any> {
+    const { companyId, authToken, id, context } = dto;
 
     const url = `/v2.1/texts/tags/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -357,6 +364,7 @@ export class JustCallApiService extends BaseApiService {
     return this.executeApiCall(url, {
       headers,
       method: "DELETE",
+      context,
     });
   }
 
@@ -377,8 +385,10 @@ export class JustCallApiService extends BaseApiService {
   // Call Tags Endpoints
 
   // Agent Analytics Endpoints
-  getAgentAnalytics(dto: GetAgentAnalyticsDto): Promise<any> {
-    const { companyId, authToken, ...queryParams } = dto;
+  getAgentAnalytics(
+    dto: GetAgentAnalyticsDto & { context?: any }
+  ): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -393,6 +403,7 @@ export class JustCallApiService extends BaseApiService {
     return this.executeApiCall(url, {
       headers,
       params,
+      context,
     });
   }
 
@@ -401,8 +412,10 @@ export class JustCallApiService extends BaseApiService {
    * @param dto - GetAccountAnalyticsDto
    * @returns Promise<any>
    */
-  getAccountAnalytics(dto: GetAccountAnalyticsDto): Promise<any> {
-    const { authToken, ...queryParams } = dto;
+  getAccountAnalytics(
+    dto: GetAccountAnalyticsDto & { context?: any }
+  ): Promise<any> {
+    const { authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -414,11 +427,13 @@ export class JustCallApiService extends BaseApiService {
     const url = `/v2.1/calls/analytics/account`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { headers, params });
+    return this.executeApiCall(url, { headers, params, context });
   }
 
-  getNumberAnalytics(dto: GetNumberAnalyticsDto): Promise<any> {
-    const { authToken, ...queryParams } = dto;
+  getNumberAnalytics(
+    dto: GetNumberAnalyticsDto & { context?: any }
+  ): Promise<any> {
+    const { authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
@@ -430,7 +445,7 @@ export class JustCallApiService extends BaseApiService {
     const url = `/v2.1/calls/analytics/number`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { headers, params });
+    return this.executeApiCall(url, { headers, params, context });
   }
 
   /**
@@ -438,12 +453,12 @@ export class JustCallApiService extends BaseApiService {
    * @param dto
    * @returns
    */
-  getVoiceAgentData(dto: GetVoiceAgentDto): Promise<any> {
-    const { authToken, id } = dto;
+  getVoiceAgentData(dto: GetVoiceAgentDto & { context?: any }): Promise<any> {
+    const { authToken, context, id } = dto;
 
     const url = `/v2.1/calls/${id}/voice-agent`;
     const headers = this.getAuthHeaders(authToken as string);
 
-    return this.executeApiCall(url, { headers });
+    return this.executeApiCall(url, { headers, context });
   }
 }

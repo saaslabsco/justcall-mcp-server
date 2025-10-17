@@ -22,6 +22,7 @@ export const registerCallTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listCalls({
         authToken,
+        context, // Pass context for client identification
         ...params,
       });
     })
@@ -36,6 +37,7 @@ export const registerCallTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getCall({
         authToken,
+        context, // Pass context for client identification
         ...params,
       });
     })
@@ -50,6 +52,7 @@ export const registerCallTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.updateCall({
         authToken,
+        context, // Pass context for client identification
         ...params,
       });
     })
@@ -64,6 +67,7 @@ export const registerCallTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getCallJourney({
         authToken,
+        context, // Pass context for client identification
         ...params,
       });
     })
@@ -78,6 +82,7 @@ export const registerCallTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getVoiceAgentData({
         authToken,
+        context, // Pass context for client identification
         ...params,
       });
     })

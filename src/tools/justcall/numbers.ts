@@ -16,6 +16,7 @@ export const registerNumberTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listNumbers({
         authToken,
+        context,
         ...params,
       });
     })
@@ -30,6 +31,7 @@ export const registerNumberTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getNumber({
         authToken,
+        context,
         ...params,
       });
     })

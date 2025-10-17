@@ -16,6 +16,7 @@ export const registerWebhookTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listWebhooks({
         authToken,
+        context,
         ...params,
       });
     })
@@ -30,6 +31,7 @@ export const registerWebhookTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.createWebhook({
         authToken,
+        context,
         ...params,
       });
     })

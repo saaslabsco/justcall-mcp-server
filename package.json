@@ -1,7 +1,7 @@
 {
   "name": "@justcall/mcp-server",
   "description": "JustCall MCP Server",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "src/index.ts",
@@ -31,7 +31,7 @@
     "prepare": "npm run build",
     "build": "tsc && shx chmod +x dist/*.js",
     "start": "node dist/index.js",
-    "dev": "tsx watch src/index.ts",
+    "dev": "wrangler dev",
     "dev:stdio-example": "tsx examples/stdio-client.ts",
     "dev:sse-example": "tsx examples/sse-client.ts",
     "dev:shttp-example": "tsx examples/shttp-client.ts",

@@ -21,6 +21,7 @@ export const registerCampaignTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.listCampaigns({
         authToken,
+        context,
         ...params,
       });
     })
@@ -35,6 +36,7 @@ export const registerCampaignTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.getCampaign({
         authToken,
+        context,
         ...params,
       });
     })
@@ -49,6 +51,7 @@ export const registerCampaignTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.createCampaign({
         authToken,
+        context,
         ...params,
       });
     })
@@ -63,6 +66,7 @@ export const registerCampaignTools = (server: McpServer) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.updateCampaign({
         authToken,
+        context,
         ...params,
       });
     })

@@ -15,17 +15,6 @@ export abstract class BaseApiService {
    * @returns The user-agent string
    */
   protected buildUserAgent(context?: any): string {
-    // Try to get client info from MCP protocol
-    const clientInfo = context?.meta?.clientInfo || context?.clientInfo;
-
-    if (clientInfo) {
-      const clientString = clientInfo.version
-        ? `${clientInfo.name}/${clientInfo.version}`
-        : clientInfo.name;
-      return `${this.SERVER_NAME}/${version} (Client: ${clientString})`;
-    }
-
-    // Fallback: Try to detect from user-agent header
     const userAgent = context?.requestInfo?.headers?.["user-agent"];
     if (userAgent) {
       return `${this.SERVER_NAME}/${version} (Client: ${userAgent})`;

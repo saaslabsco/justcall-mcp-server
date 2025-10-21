@@ -1,6 +1,7 @@
 import { McpAgent } from "agents/mcp";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { registerAllTools } from "./tools/index.js";
+import * as packageJson from "../package.json";
 
 import dotenv from "dotenv";
 
@@ -19,7 +20,7 @@ dotenv.config();
 export class JustCallMCP extends McpAgent {
   server = new McpServer({
     name: "JustCall MCP",
-    version: "0.0.1",
+    version: packageJson.default.version,
   });
 
   async init() {

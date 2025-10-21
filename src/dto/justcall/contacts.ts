@@ -30,7 +30,7 @@ export interface CreateContactDto extends BaseJustCallDto {
   notes?: string;
   across_team?: boolean;
   agent_id?: number;
-  agent_ids?: string[];
+  agent_ids?: number[];
 }
 
 export interface UpdateContactDto extends BaseJustCallDto {

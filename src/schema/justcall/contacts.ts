@@ -89,9 +89,9 @@ export const CreateContactSchema = {
       "Specify the agent_id to create contact only for a specific agent"
     ),
   agent_ids: z
-    .array(z.string())
+    .array(z.number())
     .optional()
     .describe(
-      "Specify the agent_ids to create contact only for a specific agents"
+      "Specify the agent_ids to create contact only for specific agents"
     ),
 };

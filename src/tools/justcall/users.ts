@@ -10,7 +10,7 @@ export const registerUserTools = (server: McpServer) => {
   // List Users Tool
   server.tool(
     "list_users",
-    "List all users/agents in the account",
+    "Retrieve all users associated with the JustCall account",
     ListUsersSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -25,7 +25,7 @@ export const registerUserTools = (server: McpServer) => {
   // Get User Tool
   server.tool(
     "get_user",
-    "Get detailed information for a specific user/agent",
+    "Retrieve detailed information for a specific user by ID",
     GetUserSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

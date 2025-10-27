@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 0.0.10
+
+### Patch Changes
+
+- 6c1796d: fix: Updated tool titles and descriptions; modified base API to fetch client info
+
 ## 0.0.6
 
 ### Patch Changes

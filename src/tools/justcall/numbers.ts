@@ -9,8 +9,8 @@ export const registerNumberTools = (server: McpServer) => {
 
   // List Numbers Tool
   server.tool(
-    "list_numbers",
-    "Retrieve all JustCall phone numbers",
+    "list_justcall_numbers",
+    "Retrieve all phone numbers associated with the JustCall account",
     ListNumbersSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -24,8 +24,8 @@ export const registerNumberTools = (server: McpServer) => {
 
   // Get Number Tool
   server.tool(
-    "get_number",
-    "Retrieve detailed information for a specific JustCall phone number",
+    "get_justcall_number",
+    "Retrieve detailed information for a specific phone number by ID",
     GetNumberSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

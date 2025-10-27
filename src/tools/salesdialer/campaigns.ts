@@ -14,8 +14,8 @@ export const registerCampaignTools = (server: McpServer) => {
 
   // List Campaigns Tool
   server.tool(
-    "list_campaigns",
-    "Retrieve all sales dialer campaigns",
+    "list_salesdialer_campaigns",
+    "Retrieve all Sales Dialer campaigns in the JustCall account",
     ListCampaignsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -29,8 +29,8 @@ export const registerCampaignTools = (server: McpServer) => {
 
   // Get Campaign Tool
   server.tool(
-    "get_campaign",
-    "Retrieve detailed information for a specific sales dialer campaign",
+    "get_salesdialer_campaign",
+    "Retrieve detailed information for a specific Sales Dialer campaign by ID",
     GetCampaignSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -44,8 +44,8 @@ export const registerCampaignTools = (server: McpServer) => {
 
   // Create Campaign Tool
   server.tool(
-    "create_campaign",
-    "Create a new sales dialer campaign",
+    "create_salesdialer_campaign",
+    "Create a new Sales Dialer campaign in the JustCall account",
     CreateCampaignSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -59,8 +59,8 @@ export const registerCampaignTools = (server: McpServer) => {
 
   // Update Campaign Tool
   server.tool(
-    "update_campaign",
-    "Update campaign details including name, description, status, and assignments",
+    "update_salesdialer_campaign",
+    "Update/modify details of an existing Sales Dialer campaign in the JustCall account",
     UpdateCampaignSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

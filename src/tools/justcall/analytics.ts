@@ -13,8 +13,8 @@ export const registerAnalyticsTools = (server: McpServer) => {
 
   // Get Agent Analytics Tool
   server.tool(
-    "get_agent_analytics",
-    "Retrieve agent analytics data for specified date range",
+    "justcall_agent_analytics",
+    "Retrieve call performance analytics for a specific agent identified by Agent ID",
     GetAgentAnalyticsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -28,8 +28,8 @@ export const registerAnalyticsTools = (server: McpServer) => {
 
   // Get Account analytics Tool
   server.tool(
-    "get_account_analytics",
-    "Retrieve account analytics data for specified date range",
+    "justcall_account_analytics",
+    "Retrieve aggregated call analytics at the JustCall account level",
     GetAccountAnalyticsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -43,8 +43,8 @@ export const registerAnalyticsTools = (server: McpServer) => {
 
   // Get Number analytics Tool
   server.tool(
-    "get_number_analytics",
-    "Retrieve number analytics data for specified date range",
+    "justcall_number_analytics",
+    "Retrieve call analytics for a specific JustCall phone number",
     GetNumberAnalyticsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

@@ -16,7 +16,7 @@ export const registerCallTools = (server: McpServer) => {
   // List Calls Tool
   server.tool(
     "list_calls",
-    "Lists all JustCall calls",
+    "Retrieve all calls associated with the JustCall account",
     ListCallsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -31,7 +31,7 @@ export const registerCallTools = (server: McpServer) => {
   // Get Call Tool
   server.tool(
     "get_call",
-    "Get a specific JustCall call by ID",
+    "Retrieve detailed information for a specific call by Call ID",
     GetCallSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -46,7 +46,7 @@ export const registerCallTools = (server: McpServer) => {
   // Update Call Tool
   server.tool(
     "update_call",
-    "Update a JustCall call",
+    "Update/modify details of an existing call record identified by Call ID",
     UpdateCallSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -61,7 +61,7 @@ export const registerCallTools = (server: McpServer) => {
   // Get Call Journey Tool
   server.tool(
     "get_call_journey",
-    "Get call journey details",
+    "Fetch the sequence of events for a specific call identified by Call ID",
     GetCallJourneySchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -75,8 +75,8 @@ export const registerCallTools = (server: McpServer) => {
 
   // Get voice agent data
   server.tool(
-    "get_voice_agent_data",
-    "Get voice agent data",
+    "get_voice_agent_call",
+    "Retrieve voice agent related data for a specific call identified by Call ID",
     GetVoiceAgentSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

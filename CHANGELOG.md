@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated Base API to support client info details when available.
+
 ## 0.0.6
 
 ### Patch Changes

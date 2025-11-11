@@ -30,7 +30,23 @@ export class JustCallMCP extends McpAgent {
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext) {
     const url = new URL(request.url);
+    if (
+      !request.headers.get("Authorization") &&
+      url.searchParams.get("key") &&
+      url.searchParams.get("secret")
+    ) {
+      // Extract auth credentials from query parameters
+      const key = url.searchParams.get("key");
+      const secret = url.searchParams.get("secret");
 
+      // If credentials are in the URL, add them to request headers
+      // This ensures per-request isolation (no global state)
+      if (key && secret) {
+        const headers = new Headers(request.headers);
+        headers.set("Authorization", `${key}:${secret}`);
+        request = new Request(request, { headers });
+      }
+    }
     if (url.pathname === "/sse" || url.pathname === "/sse/message") {
       return JustCallMCP.serveSSE("/sse").fetch(request, env, ctx);
     }

@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 0.0.10
+
+### Patch Changes
+
+- Support url params for api secret
+
 ## 0.0.9
 
 ### Patch Changes

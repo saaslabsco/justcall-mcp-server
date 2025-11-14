@@ -1,5 +1,17 @@
 # @justcall/mcp-server
 
+## 1.0.0
+
+### Patch Changes
+
+- Add OAuth2 authentication support for enhanced security
+  - Implement OAuth2 authorization server metadata endpoint (`/.well-known/oauth-authorization-server`)
+  - Add OAuth2 configuration (S256 code challenge method)
+  - Protect MCP and SSE endpoints with Bearer token authentication
+  - Add token validation middleware for `/mcp`, `/sse`, and `/sse/message` endpoints
+  - Support authorization code grant flow with client secret authentication
+  - Add utility function to extract auth tokens from request context
+
 ## 0.0.11
 
 ### Patch Changes

@@ -60,7 +60,44 @@ The default and recommended way to connect is via Streamable HTTP Transport:
 
 - Connect to `https://mcp.justcall.host/mcp` from any MCP client using Streamable HTTP Transport
 - Include your JustCall API key as a bearer token in the request headers
-- Example header: `Authorization: <JUSTCALL_API_KEY>:<JUSTCALL_API_SECRET>`
+- Example header: `Authorization: Bearer <JUSTCALL_API_KEY>:<JUSTCALL_API_SECRET>`
+
+## Authentication & Security
+
+The JustCall MCP Server implements OAuth2 authentication for secure access to all endpoints.
+
+### OAuth2 Configuration
+
+The server supports OAuth2 authorization with the following features:
+
+- **Authorization Endpoint**: OAuth2 authorization server metadata is available at `/.well-known/oauth-authorization-server`
+- **Grant Type**: Authorization code flow with PKCE (Proof Key for Code Exchange)
+- **Code Challenge Method**: S256 (SHA-256)
+- **Token Authentication**: All MCP and SSE endpoints require Bearer token authentication
+
+### Protected Endpoints
+
+The following endpoints require valid Bearer token authentication:
+
+- `/mcp` - Main MCP endpoint
+- `/sse` - Server-Sent Events endpoint
+- `/sse/message` - SSE message endpoint
+
+### Authentication Header Format
+
+Include your JustCall API credentials as a Bearer token:
+
+```
+Authorization: Bearer <JWT_TOKEN_BY_OAUTH>
+Authorization: Bearer <JUSTCALL_API_KEY>:<JUSTCALL_API_SECRET>
+```
+
+### Public Endpoints
+
+The following endpoints are publicly accessible:
+
+- `/health` - Health check endpoint (returns 200 OK)
+- `/.well-known/oauth-authorization-server` - OAuth2 authorization server metadata
 
 ## Available Tools
 

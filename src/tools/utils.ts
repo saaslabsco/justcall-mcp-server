@@ -45,11 +45,9 @@ export function createToolHandler<T>(
  */
 export function getAuthToken(context?: any): string {
   const authHeader = context?.requestInfo?.headers.authorization;
-  const [apiKey, apiSecret] =
-    authHeader?.replace("Bearer ", "").split(":") || [];
+  const apiKey = authHeader?.replace("Bearer ", "");
   const authToken =
-    apiKey && apiSecret
-      ? `${apiKey}:${apiSecret}`
-      : `${process.env.JUSTCALL_API_KEY}:${process.env.JUSTCALL_API_SECRET}`;
+    apiKey ??
+    `${process.env.JUSTCALL_API_KEY}:${process.env.JUSTCALL_API_SECRET}`;
   return authToken;
 }

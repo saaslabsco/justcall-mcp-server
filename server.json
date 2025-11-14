@@ -6,7 +6,7 @@
     "url": "https://github.com/saaslabsco/justcall-mcp-server",
     "source": "github"
   },
-  "version": "0.0.11",
+  "version": "1.0.0",
   "remotes": [
     {
       "type": "streamable-http",

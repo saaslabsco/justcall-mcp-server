@@ -15,34 +15,34 @@ export abstract class BaseApiService {
    * @returns The user-agent string
    */
   protected buildUserAgent(context?: any): string {
-     // Try to get client info from MCP context
-     const clientInfo = context?.meta?.clientInfo || context?.clientInfo;
-    
-     if (clientInfo) {
-       const clientName = clientInfo.name || 'Unknown';
-       const clientVersion = clientInfo.version || '';
-       
-       // Build platform info (e.g., "darwin arm64")
-       let platformInfo = '';
-       if (clientInfo.platform) {
-         const platform = clientInfo.platform.os || '';
-         const arch = clientInfo.platform.arch || '';
-         platformInfo = [platform, arch].filter(Boolean).join(' ');
-       }
-       
-       // Format: JustCall-MCP-Server/0.0.7 (Client: Cursor/1.7.46 (darwin arm64))
-       let clientStr = clientName;
-       if (clientVersion) {
-         clientStr += `/${clientVersion}`;
-       }
-       if (platformInfo) {
-         clientStr += ` (${platformInfo})`;
-       }
-       
-       return `${this.SERVER_NAME}/${version} (Client: ${clientStr})`;
-     }
-     
-     // Fallback to user-agent header if clientInfo not available
+    // Try to get client info from MCP context
+    const clientInfo = context?.meta?.clientInfo || context?.clientInfo;
+
+    if (clientInfo) {
+      const clientName = clientInfo.name || "Unknown";
+      const clientVersion = clientInfo.version || "";
+
+      // Build platform info (e.g., "darwin arm64")
+      let platformInfo = "";
+      if (clientInfo.platform) {
+        const platform = clientInfo.platform.os || "";
+        const arch = clientInfo.platform.arch || "";
+        platformInfo = [platform, arch].filter(Boolean).join(" ");
+      }
+
+      // Format: JustCall-MCP-Server/0.0.7 (Client: Cursor/1.7.46 (darwin arm64))
+      let clientStr = clientName;
+      if (clientVersion) {
+        clientStr += `/${clientVersion}`;
+      }
+      if (platformInfo) {
+        clientStr += ` (${platformInfo})`;
+      }
+
+      return `${this.SERVER_NAME}/${version} (Client: ${clientStr})`;
+    }
+
+    // Fallback to user-agent header if clientInfo not available
     const userAgent = context?.requestInfo?.headers?.["user-agent"];
     if (userAgent) {
       return `${this.SERVER_NAME}/${version} (Client: ${userAgent})`;

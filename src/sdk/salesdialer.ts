@@ -3,7 +3,21 @@ import {
   GetCampaignDto,
   CreateCampaignDto,
   UpdateCampaignDto,
+  ListCampaignContactsDto,
+  AddContactToCampaignDto,
   GetSalesDialerAnalyticsDto,
+  // Contacts DTOs
+  ListSalesDialerContactsDto,
+  GetSalesDialerContactDto,
+  CreateSalesDialerContactDto,
+  UpdateSalesDialerContactDto,
+  ImportSalesDialerContactsDto,
+  ImportSalesDialerContactsStatusDto,
+  AddSalesDialerContactsDncaDto,
+  ListSalesDialerCustomFieldsDto,
+  // Calls DTOs
+  ListSalesDialerCallsDto,
+  GetSalesDialerCallDto,
 } from "../dto/salesdialer/index.js";
 import { BaseApiService } from "./base-api.js";
 import axios from "axios";
@@ -107,5 +121,179 @@ export class SalesDialerApiService extends BaseApiService {
       data: requestBody,
       context,
     });
+  }
+
+  // Campaign Contacts Endpoints
+  listCampaignContacts(dto: ListCampaignContactsDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/sales_dialer/campaigns/contacts`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  addContactToCampaign(dto: AddContactToCampaignDto): Promise<any> {
+    const { companyId, authToken, ...requestBody } = dto;
+
+    const url = `/v2.1/sales_dialer/campaigns/contact`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "POST",
+      data: requestBody,
+    });
+  }
+
+  // Sales Dialer Contacts Endpoints
+  listSalesDialerContacts(dto: ListSalesDialerContactsDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/sales_dialer/contacts`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  getSalesDialerContact(dto: GetSalesDialerContactDto): Promise<any> {
+    const { companyId, authToken, id } = dto;
+
+    const url = `/v2.1/sales_dialer/contacts/${id}`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { headers });
+  }
+
+  createSalesDialerContact(dto: CreateSalesDialerContactDto): Promise<any> {
+    const { companyId, authToken, ...requestBody } = dto;
+
+    const url = `/v2.1/sales_dialer/contacts`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "POST",
+      data: requestBody,
+    });
+  }
+
+  updateSalesDialerContact(dto: UpdateSalesDialerContactDto): Promise<any> {
+    const { companyId, authToken, id, ...requestBody } = dto;
+
+    const url = `/v2.1/sales_dialer/contacts/${id}`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "PUT",
+      data: requestBody,
+    });
+  }
+
+  importSalesDialerContacts(dto: ImportSalesDialerContactsDto): Promise<any> {
+    const { companyId, authToken, ...requestBody } = dto;
+
+    const url = `/v2.1/sales_dialer/contacts/bulk_import`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "POST",
+      data: requestBody,
+    });
+  }
+
+  importSalesDialerContactsStatus(
+    dto: ImportSalesDialerContactsStatusDto
+  ): Promise<any> {
+    const { companyId, authToken, batch_id } = dto;
+
+    const url = `/v2.1/sales_dialer/contacts/bulk_import/status/${batch_id}`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { headers });
+  }
+
+  addSalesDialerContactsDnca(dto: AddSalesDialerContactsDncaDto): Promise<any> {
+    const { companyId, authToken, ...requestBody } = dto;
+
+    const url = `/v2.1/sales_dialer/contacts/bulk-add-dnca`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, {
+      headers,
+      method: "POST",
+      data: requestBody,
+    });
+  }
+
+  listSalesDialerCustomFields(
+    dto: ListSalesDialerCustomFieldsDto
+  ): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value.toString();
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/sales_dialer/contacts/custom-fields`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  // Sales Dialer Calls Endpoints
+  listSalesDialerCalls(dto: ListSalesDialerCallsDto): Promise<any> {
+    const { companyId, authToken, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        if (typeof value === "boolean") {
+          acc[key] = value.toString();
+        } else {
+          acc[key] = value.toString();
+        }
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/sales_dialer/calls`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
+  }
+
+  getSalesDialerCall(dto: GetSalesDialerCallDto): Promise<any> {
+    const { companyId, authToken, id, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce((acc, [key, value]) => {
+        acc[key] = String(value);
+        return acc;
+      }, {} as Record<string, any>);
+
+    const url = `/v2.1/sales_dialer/calls/${id}`;
+    const headers = this.getAuthHeaders(authToken as string);
+
+    return this.executeApiCall(url, { params, headers });
   }
 }

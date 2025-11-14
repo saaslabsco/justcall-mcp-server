@@ -34,11 +34,29 @@ export interface CreateContactDto extends BaseJustCallDto {
 }
 
 export interface UpdateContactDto extends BaseJustCallDto {
-  id: number;
+  id?: number;
+  contact_number?: string;
   first_name?: string;
   last_name?: string;
+  other_numbers?: Array<{ label: string; number: string }>;
   email?: string;
-  phone?: string;
+  extension?: number;
   company?: string;
-  designation?: string;
+  address?: string;
+  notes?: Array<{ note: string }>;
+  across_team?: boolean;
+}
+
+export interface UpdateContactStatusDto extends BaseJustCallDto {
+  id?: number;
+  contact_number?: string;
+  add_to?: ("blacklist" | "dnd" | "dnm")[];
+  remove_from?: ("blacklist" | "dnd" | "dnm")[];
+  across_team?: boolean;
+}
+
+export interface AddContactsBlacklistDto extends BaseJustCallDto {
+  contact_numbers: string[];
+  add_to: ("blacklist" | "dnd" | "dnm")[];
+  across_team?: boolean;
 }

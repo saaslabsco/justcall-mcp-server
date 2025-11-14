@@ -53,3 +53,30 @@ export interface CreateSmsTagDto extends BaseJustCallDto {
 export interface DeleteSmsTagDto extends BaseJustCallDto {
   id: number;
 }
+
+// SMS Threads DTOs
+export interface ListSmsThreadsDto extends BaseJustCallDto {
+  phone_id: number;
+  from_datetime?: string;
+  to_datetime?: string;
+  contact_number?: string;
+  keyword?: string;
+  tag_id?: number;
+  per_page?: number;
+  page?: number;
+  order?: "asc" | "desc";
+}
+
+export interface GetSmsThreadDto extends BaseJustCallDto {
+  thread_id: string;
+  offset?: number;
+  limit?: number;
+}
+
+export interface AddTagToThreadDto extends BaseJustCallDto {
+  tag_id: number;
+  thread_id?: string;
+  phone_id?: number;
+  justcall_number?: string;
+  contact_number?: string;
+}

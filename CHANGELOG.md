@@ -1,5 +1,20 @@
 # @justcall/mcp-server
 
+## 0.0.11
+
+### Patch Changes
+
+- Add extensive new functionality across JustCall and SalesDialer platforms including:
+  - JustCall AI analysis (transcription, summaries, insights for calls/meetings)
+  - Appointments and calendar management
+  - WhatsApp messaging templates and communications
+  - User groups and availability management
+  - Enhanced contacts with status tracking and bulk operations
+  - SMS threads with tagging support
+  - Voice agent call initiation
+  - SalesDialer contacts, calls, and campaign management
+  - Custom fields support across platforms
+
 ## 0.0.10
 
 ### Patch Changes

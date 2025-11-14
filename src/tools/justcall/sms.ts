@@ -11,6 +11,9 @@ import {
   GetSmsTagSchema,
   CreateSmsTagSchema,
   DeleteSmsTagSchema,
+  ListSmsThreadsSchema,
+  GetSmsThreadSchema,
+  AddTagToThreadSchema,
 } from "../../schema/index.js";
 
 export const registerSmsTools = (server: McpServer) => {
@@ -131,6 +134,48 @@ export const registerSmsTools = (server: McpServer) => {
       return justcallAPIservice.deleteSmsTag({
         authToken,
         context,
+        ...params,
+      });
+    })
+  );
+
+  // List SMS Threads Tool
+  server.tool(
+    "list_sms_threads",
+    "Retrieve all sms threads/conversations associated with a JustCall number",
+    ListSmsThreadsSchema,
+    createToolHandler(async (params, context) => {
+      const authToken = getAuthToken(context);
+      return justcallAPIservice.listSmsThreads({
+        authToken,
+        ...params,
+      });
+    })
+  );
+
+  // Get SMS Thread Tool
+  server.tool(
+    "get_sms_thread",
+    "Retrieve a specific sms thread/conversation by ID",
+    GetSmsThreadSchema,
+    createToolHandler(async (params, context) => {
+      const authToken = getAuthToken(context);
+      return justcallAPIservice.getSmsThread({
+        authToken,
+        ...params,
+      });
+    })
+  );
+
+  // Add Tag to Thread Tool
+  server.tool(
+    "add_sms_thread_thread",
+    "Add tag to a sms thread/conversation identified by thread ID or combination of contact number and JustCall number",
+    AddTagToThreadSchema,
+    createToolHandler(async (params, context) => {
+      const authToken = getAuthToken(context);
+      return justcallAPIservice.addTagToThread({
+        authToken,
         ...params,
       });
     })

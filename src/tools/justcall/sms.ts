@@ -18,8 +18,8 @@ export const registerSmsTools = (server: McpServer) => {
 
   // Send SMS Tool
   server.tool(
-    "send_sms",
-    "Send an SMS/text message to a contact",
+    "send_sms_mms",
+    "Send a new sms or text message or mms to a contact number",
     SendSmsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -34,7 +34,7 @@ export const registerSmsTools = (server: McpServer) => {
   // List SMS Tool
   server.tool(
     "list_sms",
-    "Retrieve all SMS/text messages",
+    "Retrieve all sms/text messages associated with the JustCall account",
     ListSmsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -49,7 +49,7 @@ export const registerSmsTools = (server: McpServer) => {
   // Get SMS Tool
   server.tool(
     "get_sms",
-    "Get detailed information for a specific SMS/text message",
+    "Retrieve detailed information for a specific sms/text by ID",
     GetSmsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -64,7 +64,7 @@ export const registerSmsTools = (server: McpServer) => {
   // Check SMS Reply Tool
   server.tool(
     "check_sms_reply",
-    "Check for the most recent inbound SMS reply from a specific contact",
+    "Check for the most recent inbound sms/text message from a contact number",
     CheckSmsReplySchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -79,7 +79,7 @@ export const registerSmsTools = (server: McpServer) => {
   // List SMS Tags Tool
   server.tool(
     "list_sms_tags",
-    "Retrieve all SMS tags used for organizing text messages",
+    "Retrieve the list of all sms tags defined in the JustCall account",
     ListSmsTagsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -94,7 +94,7 @@ export const registerSmsTools = (server: McpServer) => {
   // Get SMS Tag Tool
   server.tool(
     "get_sms_tag",
-    "Get detailed information for a specific SMS tag",
+    "Retrieve details of a specific sms tag by ID",
     GetSmsTagSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -109,7 +109,7 @@ export const registerSmsTools = (server: McpServer) => {
   // Create SMS Tag Tool
   server.tool(
     "create_sms_tag",
-    "Create a new tag for organizing SMS conversations",
+    "Create a new sms tag in the JustCall account for tagging conversations",
     CreateSmsTagSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -124,7 +124,7 @@ export const registerSmsTools = (server: McpServer) => {
   // Delete SMS Tag Tool
   server.tool(
     "delete_sms_tag",
-    "Delete a specific SMS tag",
+    "Delete a specific sms tag by ID",
     DeleteSmsTagSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

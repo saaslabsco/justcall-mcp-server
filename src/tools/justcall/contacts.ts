@@ -10,7 +10,7 @@ export const registerContactTools = (server: McpServer) => {
   // List Contacts Tool
   server.tool(
     "list_contacts",
-    "Retrieve all contacts from the CRM",
+    "Retrieve all contacts associated with the JustCall account",
     ListContactsSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -25,7 +25,7 @@ export const registerContactTools = (server: McpServer) => {
   // Create Contact Tool
   server.tool(
     "create_contact",
-    "Create a new contact in the CRM",
+    "Create a new contact in the JustCall account",
     CreateContactSchema,
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

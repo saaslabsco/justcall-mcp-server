@@ -10,45 +10,39 @@ It provides a function-calling interface for conversational AI systems, enabling
 
 In short: It gives your LLMs a voice and a phone number — turning chatbots into truly conversational agents.
 
-### 🧩 Prerequisites
-
-This project requires **Node.js** (which includes `npm` and `npx`).
-
-#### Installing Node.js
-
-- Visit the official Node.js website:
-  👉 [https://nodejs.org/en/download](https://nodejs.org/en/download)
-- Download and install the **LTS (Long-Term Support)** version for your platform (Windows, macOS, or Linux).
-
 ## Claude Desktop Setup
 
 1. Open `Claude Desktop` and press `CMD + ,` to go to `Settings`.
-2. Click on the `Developer` tab.
-3. Click on the `Edit Config` button.
-4. This will open the `claude_desktop_config.json` file in your file explorer.
-5. Get your JustCall API Key & Secret from the JustCall dashboard (<https://app.justcall.io/app/developersApiCredentials>).
-6. Add the following to your `claude_desktop_config.json` file. See [here](https://modelcontextprotocol.io/quickstart/user) for more details.
-7. Restart the Claude Desktop after editing the config file.
+2. Click on the `Connectors` tab.
+3. Click on the `Add Custom Connector` button.
+4. Add name as `JustCall` and Remote Server Url as `https://mcp.justcall.host/mcp`.
+5. Now on `JustCall` from the Connectors list click on `Connect` button for JustCall.
+6. It will open a JustCall page requesting API key and secret.
+7. Get your JustCall API Key & Secret from the JustCall dashboard (<https://app.justcall.io/app/developersApiCredentials>).
+8. Enter the API key and Secret and press Continue, it should redirect back you to Claude.
 
-### Remote Configuration
+## Claude Web - https://claude.ai
 
-```json
-{
-  "mcpServers": {
-    "JustCall-mcp": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "supergateway",
-        "--streamableHttp",
-        "https://mcp.justcall.host/mcp",
-        "--oauth2Bearer",
-        "<JUSTCALL_API_KEY>:<JUSTCALL_API_SECRET>"
-      ]
-    }
-  }
-}
-```
+1. Open connectors url in your Browser - <https://claude.ai/settings/connectors>.
+2. Click on the `Connectors` tab.
+3. Click on the `Add Custom Connector` button.
+4. Add name as `JustCall` and Remote Server Url as `https://mcp.justcall.host/mcp`.
+5. Now on `JustCall` from the Connectors list click on `Connect` button for JustCall.
+6. It will open a JustCall page requesting API key and secret.
+7. Get your JustCall API Key & Secret from the JustCall dashboard (<https://app.justcall.io/app/developersApiCredentials>).
+8. Enter the API key and Secret and press Continue, it should redirect back you to Claude.
+
+## Chat GPT (Only available on Plus, Pro, Business and Enterprise)
+
+1. Open connectors url in your Browser - <https://chatgpt.com/#settings/Connectors>.
+2. Click on the `Apps & Connectors` tab.
+3. Ensure developer mode is enabled in advanced settings
+3. Click on the `Create` button.
+4. Add name as `JustCall` and MCP Server Url as `https://mcp.justcall.host/mcp`. You can skip other fields.
+5. Now on `JustCall` from the Connectors list click on `Connect` button for JustCall.
+6. It will open a JustCall page requesting API key and secret.
+7. Get your JustCall API Key & Secret from the JustCall dashboard (<https://app.justcall.io/app/developersApiCredentials>).
+8. Enter the API key and Secret and press Continue, it should redirect back you to Chat GPT.
 
 ## Remote MCP
 
@@ -98,6 +92,10 @@ The following endpoints are publicly accessible:
 
 - `/health` - Health check endpoint (returns 200 OK)
 - `/.well-known/oauth-authorization-server` - OAuth2 authorization server metadata
+
+### API Usage & Rate Limits
+
+This MCP server uses the JustCall Developer API. All API requests are subject to the rate limits associated with your JustCall API key. Please refer to your [JustCall API credentials configuration](https://app.justcall.io/app/developersApiCredentials).
 
 ## Available Tools
 
@@ -221,19 +219,4 @@ The JustCall MCP Server provides 66 tools organized into the following categorie
 #### 📊 Analytics (2 tools)
 
 - **get_sales_dialer_analytics** - Retrieve comprehensive analytics data for sales dialer campaigns
-- **get_salesdialer_agent_analytics** - Retrieve call performance analytics of a specific agent for a campaign
-
-## Development
-
-```bash
-# Install dependencies
-pnpm install
-
-# Build the server
-pnpm run build
-
-# Use inspector to test the server
-pnpm run inspector
-```
-
-Update your `claude_desktop_config.json` to use the mcp server.
+- **get_salesdialer_agent_analytics** - Retrieve call performance analytics of a specific agent for a campaign.

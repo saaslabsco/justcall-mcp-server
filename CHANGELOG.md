@@ -1,8 +1,14 @@
 # @justcall/mcp-server
 
-## 1.0.0
+## 1.0.1
 
 ### Patch Changes
+
+Update README for oauth and add logo to server.json
+
+## 1.0.0
+
+### Major Changes
 
 - Add OAuth2 authentication support for enhanced security
   - Implement OAuth2 authorization server metadata endpoint (`/.well-known/oauth-authorization-server`)

@@ -1,24 +1,29 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
   "name": "host.justcall.mcp/justcall-mcp-server",
-  "description": "JustCall MCP Server",
+  "description": "JustCall MCP Server enables LLMs and AI agents to make voice calls and send SMS via JustCall APIs.",
+  "title": "JustCall MCP Server",
   "repository": {
     "url": "https://github.com/saaslabsco/justcall-mcp-server",
     "source": "github"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "icons": [
+    {
+      "mimeType": "image/png",
+      "src": "https://cdn.justcall.io/assets-marketing/images/favicon.png",
+      "sizes": ["45x44"],
+      "theme": "light"
+    }
+  ],
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://mcp.justcall.host/mcp",
-      "headers": [
-        {
-          "name": "Authorization",
-          "description": "API key and Secret for authentication in the format of <API_KEY>:<API_SECRET>",
-          "isRequired": true,
-          "isSecret": true
-        }
-      ]
+      "url": "https://mcp.justcall.host/mcp"
+    },
+    {
+      "type": "sse",
+      "url": "https://mcp.justcall.host/sse"
     }
   ]
 }

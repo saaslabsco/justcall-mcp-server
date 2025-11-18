@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 1.0.2
+
+### Patch Changes
+
+- Add Website Url in server.json
+
 ## 1.0.1
 
 ### Patch Changes

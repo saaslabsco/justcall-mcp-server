@@ -7,7 +7,8 @@
     "url": "https://github.com/saaslabsco/justcall-mcp-server",
     "source": "github"
   },
-  "version": "1.0.1",
+  "websiteUrl": "https://justcall.io",
+  "version": "1.0.2",
   "icons": [
     {
       "mimeType": "image/png",

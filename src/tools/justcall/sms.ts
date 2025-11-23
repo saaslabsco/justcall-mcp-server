@@ -39,6 +39,9 @@ export const registerSmsTools = (server: McpServer) => {
     "list_sms",
     "Retrieve all sms/text messages associated with the JustCall account",
     ListSmsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listSms({
@@ -54,6 +57,9 @@ export const registerSmsTools = (server: McpServer) => {
     "get_sms",
     "Retrieve detailed information for a specific sms/text by ID",
     GetSmsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getSms({
@@ -69,6 +75,9 @@ export const registerSmsTools = (server: McpServer) => {
     "check_sms_reply",
     "Check for the most recent inbound sms/text message from a contact number",
     CheckSmsReplySchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.checkSmsReply({
@@ -84,6 +93,9 @@ export const registerSmsTools = (server: McpServer) => {
     "list_sms_tags",
     "Retrieve the list of all sms tags defined in the JustCall account",
     ListSmsTagsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listSmsTags({
@@ -99,6 +111,9 @@ export const registerSmsTools = (server: McpServer) => {
     "get_sms_tag",
     "Retrieve details of a specific sms tag by ID",
     GetSmsTagSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getSmsTag({
@@ -144,6 +159,9 @@ export const registerSmsTools = (server: McpServer) => {
     "list_sms_threads",
     "Retrieve all sms threads/conversations associated with a JustCall number",
     ListSmsThreadsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listSmsThreads({
@@ -158,6 +176,9 @@ export const registerSmsTools = (server: McpServer) => {
     "get_sms_thread",
     "Retrieve a specific sms thread/conversation by ID",
     GetSmsThreadSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getSmsThread({

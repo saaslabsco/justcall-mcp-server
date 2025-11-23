@@ -15,6 +15,9 @@ export const registerUserGroupTools = (server: McpServer) => {
     "list_user_groups",
     "Retrieve all user groups defined in the JustCall account",
     ListUserGroupsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listUserGroups({
@@ -29,6 +32,9 @@ export const registerUserGroupTools = (server: McpServer) => {
     "get_user_group",
     "Retrieve detailed information for a specific user group by ID",
     GetUserGroupSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getUserGroup({

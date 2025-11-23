@@ -15,6 +15,9 @@ export const registerVoiceAgentTools = (server: McpServer) => {
     "list_voice_agents",
     "Retrieve all AI voice agents associated with the JustCall account",
     ListVoiceAgentsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listVoiceAgents({

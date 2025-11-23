@@ -18,6 +18,9 @@ export const registerWhatsAppTools = (server: McpServer) => {
     "list_whatsapp_messages",
     "Retrieve all whatsapp messages associated with the JustCall account",
     ListWhatsAppMessagesSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listWhatsAppMessages({
@@ -32,6 +35,9 @@ export const registerWhatsAppTools = (server: McpServer) => {
     "get_whatsapp_message",
     "Retrieve detailed information for a specific whatsapp message by ID",
     GetWhatsAppMessageSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getWhatsAppMessage({
@@ -60,6 +66,9 @@ export const registerWhatsAppTools = (server: McpServer) => {
     "list_whatsapp_templates",
     "Retrieve all whatsapp message templates available in the JustCall account",
     ListWhatsAppTemplatesSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listWhatsAppTemplates({
@@ -74,6 +83,9 @@ export const registerWhatsAppTools = (server: McpServer) => {
     "check_whatsapp_message_reply",
     "Check for the most recent inbound whatsapp message from a contact number",
     CheckWhatsAppReplySchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.checkWhatsAppReply({

@@ -19,6 +19,9 @@ export const registerContactTools = (server: McpServer) => {
     "list_contacts",
     "Retrieve all contacts associated with the JustCall account",
     ListContactsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listContacts({
@@ -34,6 +37,9 @@ export const registerContactTools = (server: McpServer) => {
     "get_contact",
     "Retrieve detailed information for a specific contact by ID",
     GetContactSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getContact({

@@ -1,5 +1,32 @@
 # @justcall/mcp-server
 
+## 1.1.0
+
+### Minor Changes
+
+- Add readOnlyHint metadata to all read-only tools across the JustCall and
+  Sales Dialer tool sets. This enhancement helps MCP clients identify which
+  tools perform read-only operations, enabling better tool selection and
+  usage patterns.
+
+  The readOnlyHint is set to true for all tools that only retrieve data
+  without modifying state, including:
+
+  - Call retrieval tools (list_calls, get_call, get_call_journey, etc.)
+  - Contact listing and retrieval tools
+  - Analytics tools
+  - SMS/WhatsApp message retrieval tools
+  - User and user group listing tools
+  - Webhook listing tools
+  - Number listing tools
+  - Appointment slot listing tools
+  - AI analysis retrieval tools
+  - Voice agent listing tools
+  - Sales Dialer read-only operations
+
+  This change improves tool discoverability and helps AI agents make more
+  informed decisions about which tools to use for different operations.
+
 ## 1.0.2
 
 ### Patch Changes

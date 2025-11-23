@@ -17,6 +17,9 @@ export const registerAiTools = (server: McpServer) => {
     "list_calls_ai_analysis",
     "Retrieve AI-generated analysis for all calls associated with either JustCall or Sales Dialer",
     ListCallsAiDataSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listCallsAiData({
@@ -31,6 +34,9 @@ export const registerAiTools = (server: McpServer) => {
     "get_call_ai_analysis",
     "Retrieve AI-generated analysis for a specific call by Call ID associated with either JustCall or Sales Dialer",
     GetCallAiDataSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getCallAiData({
@@ -45,6 +51,9 @@ export const registerAiTools = (server: McpServer) => {
     "list_meetings_ai_analysis",
     "Retrieve AI-generated analysis for recorded meetings",
     ListMeetingsAiDataSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listMeetingsAiData({
@@ -59,6 +68,9 @@ export const registerAiTools = (server: McpServer) => {
     "get_meeting_ai_analysis",
     "Retrieve AI-generated analysis for a specific meeting identified by Instance ID",
     GetMeetingAiDataSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getMeetingAiData({

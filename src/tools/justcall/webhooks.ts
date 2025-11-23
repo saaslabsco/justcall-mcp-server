@@ -12,6 +12,9 @@ export const registerWebhookTools = (server: McpServer) => {
     "list_webhooks",
     "Retrieve all configured webhooks",
     ListWebhooksSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listWebhooks({

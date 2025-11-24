@@ -13,11 +13,14 @@ import {
 export const registerCallTools = (server: McpServer) => {
   const justcallAPIservice = new JustCallApiService();
 
-  // List Calls Tool
+  // Get Call Tool
   server.tool(
     "list_calls",
     "Retrieve all calls associated with the JustCall account",
     ListCallsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listCalls({
@@ -33,6 +36,9 @@ export const registerCallTools = (server: McpServer) => {
     "get_call",
     "Retrieve detailed information for a specific call by Call ID",
     GetCallSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getCall({
@@ -63,6 +69,9 @@ export const registerCallTools = (server: McpServer) => {
     "get_call_journey",
     "Fetch the sequence of events for a specific call identified by Call ID",
     GetCallJourneySchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getCallJourney({
@@ -78,6 +87,9 @@ export const registerCallTools = (server: McpServer) => {
     "get_voice_agent_call",
     "Retrieve voice agent related data for a specific call identified by Call ID",
     GetVoiceAgentSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getVoiceAgentData({

@@ -15,6 +15,9 @@ export const registerSalesDialerCallTools = (server: McpServer) => {
     "list_salesdialer_calls",
     "Retrieve all calls made via the Sales Dialer in JustCall",
     ListSalesDialerCallsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.listSalesDialerCalls({
@@ -29,6 +32,9 @@ export const registerSalesDialerCallTools = (server: McpServer) => {
     "get_salesdialer_call",
     "Retrieve detailed information for a specific Sales Dialer call by Call ID",
     GetSalesDialerCallSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.getSalesDialerCall({

@@ -21,6 +21,9 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     "list_salesdialer_contacts",
     "Retrieve all contacts from Sales Dialer in the JustCall account",
     ListSalesDialerContactsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.listSalesDialerContacts({
@@ -35,6 +38,9 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     "get_salesdialer_contact",
     "Retrieve detailed information for a specific contact in Sales Dialer by ID",
     GetSalesDialerContactSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.getSalesDialerContact({
@@ -91,6 +97,9 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     "import_salesdialer_contacts_status",
     "Check the status of a bulk import job/request by its batch ID",
     ImportSalesDialerContactsStatusSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.importSalesDialerContactsStatus({
@@ -119,6 +128,9 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     "list_salesdialer_custom_fields",
     "Fetch all custom contact fields defined in your Sales Dialer account and their details",
     ListSalesDialerCustomFieldsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.listSalesDialerCustomFields({

@@ -19,6 +19,9 @@ export const registerCampaignTools = (server: McpServer) => {
     "list_salesdialer_campaigns",
     "Retrieve all Sales Dialer campaigns in the JustCall account",
     ListCampaignsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.listCampaigns({
@@ -34,6 +37,9 @@ export const registerCampaignTools = (server: McpServer) => {
     "get_salesdialer_campaign",
     "Retrieve detailed information for a specific Sales Dialer campaign by ID",
     GetCampaignSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.getCampaign({
@@ -79,6 +85,9 @@ export const registerCampaignTools = (server: McpServer) => {
     "list_salesdialer_campaign_contacts",
     "Retrieve all contacts in a specific Sales Dialer campaign identified by Campaign ID",
     ListCampaignContactsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.listCampaignContacts({

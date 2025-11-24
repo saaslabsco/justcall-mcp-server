@@ -16,6 +16,9 @@ export const registerAppointmentTools = (server: McpServer) => {
     "list_appointment_slots",
     "Retrieve all available time slots for appointments on a specific JustCall calendar",
     ListAppointmentSlotsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listAppointmentSlots({
@@ -44,6 +47,9 @@ export const registerAppointmentTools = (server: McpServer) => {
     "get_appointment",
     "Retrieve details of a specific appointment by its ID",
     GetAppointmentSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getAppointment({

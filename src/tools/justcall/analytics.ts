@@ -16,6 +16,9 @@ export const registerAnalyticsTools = (server: McpServer) => {
     "get_agent_analytics",
     "Retrieve call performance analytics for a specific agent identified by Agent ID",
     GetAgentAnalyticsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getAgentAnalytics({
@@ -31,6 +34,9 @@ export const registerAnalyticsTools = (server: McpServer) => {
     "get_account_analytics",
     "Retrieve aggregated call analytics at the JustCall account level",
     GetAccountAnalyticsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getAccountAnalytics({
@@ -46,6 +52,9 @@ export const registerAnalyticsTools = (server: McpServer) => {
     "get_number_analytics",
     "Retrieve call analytics for a specific JustCall phone number",
     GetNumberAnalyticsSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getNumberAnalytics({

@@ -16,6 +16,9 @@ export const registerUserTools = (server: McpServer) => {
     "list_users",
     "Retrieve all users associated with the JustCall account",
     ListUsersSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.listUsers({
@@ -31,6 +34,9 @@ export const registerUserTools = (server: McpServer) => {
     "get_user",
     "Retrieve detailed information for a specific user by ID",
     GetUserSchema,
+    {
+      readOnlyHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.getUser({

@@ -6,19 +6,19 @@ export const ListCallsSchema = {
     .string()
     .optional()
     .describe(
-      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format starting from when the calls are to be fetched in user's timezone"
+      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format starting from when the calls are to be fetched in user's timezone",
     ),
   to_datetime: z
     .string()
     .optional()
     .describe(
-      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format till when the calls are to be fetched in user's timezone"
+      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format till when the calls are to be fetched in user's timezone",
     ),
   contact_number: z
     .number()
     .optional()
     .describe(
-      "Number of the contact for which calls are to be fetched. Please provide a valid contact number with country code"
+      "Number of the contact for which calls are to be fetched. Please provide a valid contact number with country code",
     ),
   justcall_number: z
     .number()
@@ -28,13 +28,13 @@ export const ListCallsSchema = {
     .number()
     .optional()
     .describe(
-      "ID of the agent for whom the calls are to be fetched. Agent ID can be accessed using List all users API"
+      "ID of the agent for whom the calls are to be fetched. Agent ID can be accessed using List all users API",
     ),
   ivr_digit: z
     .number()
     .optional()
     .describe(
-      "Enter the IVR digit the calls routed through which need to be filtered (optional). Note: call_direction and call_type filter won't work in case you send ivr_digit"
+      "Enter the IVR digit the calls routed through which need to be filtered (optional). Note: call_direction and call_type filter won't work in case you send ivr_digit",
     ),
   call_direction: z
     .enum(["Incoming", "Outgoing"])
@@ -58,7 +58,7 @@ export const ListCallsSchema = {
     ])
     .optional()
     .describe(
-      "Enter the type of calls (answered, unanswered, missed, voicemail, abandoned) that need to be fetched"
+      "Enter the type of calls (answered, unanswered, missed, voicemail, abandoned) that need to be fetched",
     ),
   page: z
     .number()
@@ -68,37 +68,37 @@ export const ListCallsSchema = {
     .number()
     .optional()
     .describe(
-      "Number of calls to be fetched per page. Default value is 20 and maximum value is 100"
+      "Number of calls to be fetched per page. Default value is 20 and maximum value is 100",
     ),
   sort: z
     .enum(["id", "datetime"])
     .optional()
     .describe(
-      "Select a parameter to sort the order of calls. By default we apply sorting on id field"
+      "Select a parameter to sort the order of calls. By default we apply sorting on id field",
     ),
   order: z
     .enum(["asc", "desc"])
     .optional()
     .describe(
-      "Order in which the calls list should appear based on the sort parameter selected above"
+      "Order in which the calls list should appear based on the sort parameter selected above",
     ),
   fetch_queue_data: z
     .boolean()
     .optional()
     .describe(
-      "Set fetch_queue_data to true to fetch queue data like callback time, callback status, callback wait duration, etc. Default entry is false"
+      "Set fetch_queue_data to true to fetch queue data like callback time, callback status, callback wait duration, etc. Default entry is false",
     ),
   fetch_ai_data: z
     .boolean()
     .optional()
     .describe(
-      "Set fetch_ai_data to true to fetch coaching data by Justcall AI. Default entry is false"
+      "Set fetch_ai_data to true to fetch coaching data by Justcall AI. Default entry is false",
     ),
   last_call_id_fetched: z
     .number()
     .optional()
     .describe(
-      "Id of the last call fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the next_page_link parameter"
+      "Id of the last call fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the next_page_link parameter",
     ),
   call_traits: z
     .array(
@@ -110,17 +110,17 @@ export const ListCallsSchema = {
         "MERGE",
         "IVR",
         "VOICE_AGENT",
-      ])
+      ]),
     )
     .optional()
     .describe(
-      "Select one or more traits associated with a call to fetch all calls containing those traits"
+      "Select one or more traits associated with a call to fetch all calls containing those traits",
     ),
   disposition_codes: z
     .array(z.string())
     .optional()
     .describe(
-      "Filter calls by the disposition code (call outcome) added by the agent at the end of each call"
+      "Filter calls by the disposition code (call outcome) added by the agent at the end of each call",
     ),
 };
 
@@ -130,13 +130,13 @@ export const GetCallSchema = {
     .boolean()
     .optional()
     .describe(
-      "Set fetch_queue_data to true to fetch queue data like callback time, callback status, callback wait duration, etc. Default entry is false"
+      "Set fetch_queue_data to true to fetch queue data like callback time, callback status, callback wait duration, etc. Default entry is false",
     ),
   fetch_ai_data: z
     .boolean()
     .optional()
     .describe(
-      "Set fetch_ai_data to true to fetch coaching data by Justcall AI. Default entry is false"
+      "Set fetch_ai_data to true to fetch coaching data by Justcall AI. Default entry is false",
     ),
 };
 

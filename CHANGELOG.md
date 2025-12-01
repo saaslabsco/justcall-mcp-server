@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 1.1.1
+
+### Patch Changes
+
+- 9c12b88: IN-7992: Added list all blacklist contacts in justcall contacts tools
+
 ## 1.1.0
 
 ### Minor Changes

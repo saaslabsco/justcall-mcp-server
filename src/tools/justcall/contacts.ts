@@ -9,6 +9,7 @@ import {
   UpdateContactSchema,
   UpdateContactStatusSchema,
   AddContactsBlacklistSchema,
+  ListBlacklistContactsSchema,
 } from "../../schema/index.js";
 
 export const registerContactTools = (server: McpServer) => {
@@ -29,7 +30,7 @@ export const registerContactTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Get Contact Tool
@@ -46,7 +47,7 @@ export const registerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Create Contact Tool
@@ -61,7 +62,7 @@ export const registerContactTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Update Contact Tool
@@ -75,7 +76,7 @@ export const registerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Update Contact Status Tool
@@ -89,7 +90,7 @@ export const registerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Add Contacts to Blacklist Tool
@@ -103,6 +104,24 @@ export const registerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
+  );
+
+  // List Blacklist Contacts Tool
+  server.tool(
+    "list_blacklist_contacts",
+    "Retrieve all blacklist contacts from the JustCall account",
+    ListBlacklistContactsSchema,
+    {
+      readOnlyHint: true,
+    },
+    createToolHandler(async (params, context) => {
+      const authToken = getAuthToken(context);
+      return justcallAPIservice.listBlacklistContacts({
+        authToken,
+        context,
+        ...params,
+      });
+    }),
   );
 };

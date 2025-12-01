@@ -25,7 +25,7 @@ export const registerVoiceAgentTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Initiate Voice Agent Call Tool
@@ -40,6 +40,6 @@ export const registerVoiceAgentTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 };

@@ -5,35 +5,35 @@ export const SendSmsSchema = {
   contact_number: z
     .string()
     .describe(
-      "Number of the contact with country code to which SMS is to be sent. Please follow the E.164 number format."
+      "Number of the contact with country code to which SMS is to be sent. Please follow the E.164 number format.",
     ),
   justcall_number: z
     .string()
     .describe(
-      "JustCall number using which the SMS is to be sent. Please follow the E.164 number format (+141555XXXXX)."
+      "JustCall number using which the SMS is to be sent. Please follow the E.164 number format (+141555XXXXX).",
     ),
   body: z
     .string()
     .describe(
-      "Enter the content to be sent in the SMS. Maximum character limit for message is 1600."
+      "Enter the content to be sent in the SMS. Maximum character limit for message is 1600.",
     ),
   media_url: z
     .string()
     .optional()
     .describe(
-      "If any media files need to be sent, add comma-separated URL links to media_url"
+      "If any media files need to be sent, add comma-separated URL links to media_url",
     ),
   restrict_once: z
     .enum(["Yes", "No"])
     .optional()
     .describe(
-      "Set value to Yes to prevent the SMS from being sent to the same receiver in 24 hours. Default value is set to No."
+      "Set value to Yes to prevent the SMS from being sent to the same receiver in 24 hours. Default value is set to No.",
     ),
   schedule_at: z
     .string()
     .optional()
     .describe(
-      "Enter the date and time (YYYY-MM-DD HH:mm:ss) at which the SMS is to be sent."
+      "Enter the date and time (YYYY-MM-DD HH:mm:ss) at which the SMS is to be sent.",
     ),
 };
 
@@ -42,31 +42,31 @@ export const ListSmsSchema = {
     .string()
     .optional()
     .describe(
-      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format starting from when the SMS are to be fetched in user's timezone."
+      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format starting from when the SMS are to be fetched in user's timezone.",
     ),
   to_datetime: z
     .string()
     .optional()
     .describe(
-      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format till when the SMS are to be fetched in user's timezone."
+      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format till when the SMS are to be fetched in user's timezone.",
     ),
   last_sms_id_fetched: z
     .number()
     .optional()
     .describe(
-      "Id of the last SMS fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the 'next_page_link' parameter."
+      "Id of the last SMS fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the 'next_page_link' parameter.",
     ),
   contact_number: z
     .string()
     .optional()
     .describe(
-      "Number of the contact for which SMS are to be fetched. Please follow the E.164 number format."
+      "Number of the contact for which SMS are to be fetched. Please follow the E.164 number format.",
     ),
   justcall_number: z
     .string()
     .optional()
     .describe(
-      "JustCall number for which the SMS are to be fetched. Please follow the E.164 number format."
+      "JustCall number for which the SMS are to be fetched. Please follow the E.164 number format.",
     ),
   sms_direction: z
     .enum(["incoming", "outgoing"])
@@ -81,7 +81,7 @@ export const ListSmsSchema = {
     .number()
     .optional()
     .describe(
-      "Number of SMS to be fetched per page. Default value is 20 and maximum value is 100."
+      "Number of SMS to be fetched per page. Default value is 20 and maximum value is 100.",
     ),
   sort: z
     .enum(["id", "datetime"])
@@ -91,7 +91,7 @@ export const ListSmsSchema = {
     .string()
     .optional()
     .describe(
-      "Order in which the SMS list should appear based on the 'sort' parameter selected above."
+      "Order in which the SMS list should appear based on the 'sort' parameter selected above.",
     ),
 };
 
@@ -147,13 +147,13 @@ export const ListSmsThreadsSchema = {
     .string()
     .optional()
     .describe(
-      "Date in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format starting from when the threads are to be fetched"
+      "Date in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format starting from when the threads are to be fetched",
     ),
   to_datetime: z
     .string()
     .optional()
     .describe(
-      "Date in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format till when the threads are to be fetched"
+      "Date in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format till when the threads are to be fetched",
     ),
   contact_number: z
     .string()
@@ -163,19 +163,19 @@ export const ListSmsThreadsSchema = {
     .string()
     .optional()
     .describe(
-      "Filter threads containing texts with a particular keyword. Enter a minimum of 3 and maximum of 15 characters."
+      "Filter threads containing texts with a particular keyword. Enter a minimum of 3 and maximum of 15 characters.",
     ),
   tag_id: z
     .number()
     .optional()
     .describe(
-      "Enter the 'Id' of a tag to find all the threads where the particular tag has been applied"
+      "Enter the 'Id' of a tag to find all the threads where the particular tag has been applied",
     ),
   per_page: z
     .number()
     .optional()
     .describe(
-      "Number of threads to be fetched per page. Default value is 50 and maximum value is 100."
+      "Number of threads to be fetched per page. Default value is 50 and maximum value is 100.",
     ),
   page: z
     .number()
@@ -185,7 +185,7 @@ export const ListSmsThreadsSchema = {
     .enum(["asc", "desc"])
     .optional()
     .describe(
-      "Order in which the threads should appear based on Id of the thread. ASC: Older threads will appear first. DESC: Recent threads will appear first."
+      "Order in which the threads should appear based on Id of the thread. ASC: Older threads will appear first. DESC: Recent threads will appear first.",
     ),
 };
 
@@ -195,7 +195,7 @@ export const GetSmsThreadSchema = {
     .number()
     .optional()
     .describe(
-      "The starting point from which to retrieve messages within a thread. Used in combination with the limit parameter to paginate results. The value provided will skip the specified number of messages in the texts array and return the next set of messages accordingly."
+      "The starting point from which to retrieve messages within a thread. Used in combination with the limit parameter to paginate results. The value provided will skip the specified number of messages in the texts array and return the next set of messages accordingly.",
     ),
   limit: z
     .number()
@@ -214,12 +214,12 @@ export const AddTagToThreadSchema = {
     .string()
     .optional()
     .describe(
-      "Enter a JustCall number to add this tag to all the threads associated with that number"
+      "Enter a JustCall number to add this tag to all the threads associated with that number",
     ),
   contact_number: z
     .string()
     .optional()
     .describe(
-      "Enter a contact number to add this tag to all the threads associated with that number"
+      "Enter a contact number to add this tag to all the threads associated with that number",
     ),
 };

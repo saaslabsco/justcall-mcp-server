@@ -26,7 +26,7 @@ export const registerAnalyticsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Get Account analytics Tool
@@ -44,7 +44,7 @@ export const registerAnalyticsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Get Number analytics Tool
@@ -62,6 +62,6 @@ export const registerAnalyticsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 };

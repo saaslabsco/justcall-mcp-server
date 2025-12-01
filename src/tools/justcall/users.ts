@@ -26,7 +26,7 @@ export const registerUserTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Get User Tool
@@ -44,7 +44,7 @@ export const registerUserTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Update User Availability Tool
@@ -58,6 +58,6 @@ export const registerUserTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 };

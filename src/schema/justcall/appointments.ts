@@ -8,7 +8,7 @@ export const ListAppointmentSlotsSchema = {
   date: z
     .string()
     .describe(
-      "Date for which the available slots are to be fetched (YYYY-MM-DD)"
+      "Date for which the available slots are to be fetched (YYYY-MM-DD)",
     ),
   timezone: z
     .string()
@@ -35,12 +35,12 @@ export const CreateAppointmentSchema = {
   appointment_customer_date: z
     .string()
     .describe(
-      "Date on which the appointment is scheduled in customer's timezone (YYYY-MM-DD)"
+      "Date on which the appointment is scheduled in customer's timezone (YYYY-MM-DD)",
     ),
   appointment_customer_time: z
     .string()
     .describe(
-      "Time on which the appointment is scheduled in customer's timezone (hh:mm:ss)"
+      "Time on which the appointment is scheduled in customer's timezone (hh:mm:ss)",
     ),
   notes: z.string().optional().describe("Reference notes added by the contact"),
 };

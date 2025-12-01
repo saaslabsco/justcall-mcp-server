@@ -60,3 +60,15 @@ export interface AddContactsBlacklistDto extends BaseJustCallDto {
   add_to: ("blacklist" | "dnd" | "dnm")[];
   across_team?: boolean;
 }
+
+export interface ListBlacklistContactsDto extends BaseJustCallDto {
+  contact_number?: string;
+  first_name?: string;
+  last_name?: string;
+  status?: ("blacklist" | "dnd" | "dnm")[];
+  agent_ids?: number[];
+  across_team?: boolean;
+  per_page?: number;
+  page?: number;
+  order?: "asc" | "desc";
+}

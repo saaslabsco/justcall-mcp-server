@@ -6,19 +6,19 @@ export const ListUserGroupsSchema = {
     .number()
     .optional()
     .describe(
-      "Number of user group records to be fetched per page. Default value is 50 and maximum value is 100."
+      "Number of user group records to be fetched per page. Default value is 50 and maximum value is 100.",
     ),
   page: z
     .number()
     .optional()
     .describe(
-      "Page number for which user group records are to be fetched. Default value is 0."
+      "Page number for which user group records are to be fetched. Default value is 0.",
     ),
   order: z
     .enum(["asc", "desc"])
     .optional()
     .describe(
-      "Order in which the user group records should appear based on the user group Id. Default value is desc."
+      "Order in which the user group records should appear based on the user group Id. Default value is desc.",
     ),
 };
 

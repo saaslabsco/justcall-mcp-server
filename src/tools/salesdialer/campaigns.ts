@@ -29,7 +29,7 @@ export const registerCampaignTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Get Campaign Tool
@@ -47,7 +47,7 @@ export const registerCampaignTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Create Campaign Tool
@@ -62,7 +62,7 @@ export const registerCampaignTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Update Campaign Tool
@@ -77,7 +77,7 @@ export const registerCampaignTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // List Campaign Contacts Tool
@@ -94,7 +94,7 @@ export const registerCampaignTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Add Contact to Campaign Tool
@@ -108,6 +108,6 @@ export const registerCampaignTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 };

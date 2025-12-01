@@ -30,7 +30,7 @@ export const ListWebhooksSchema = {
     ])
     .optional()
     .describe(
-      "Select a type to search for subscribed events of a specific type."
+      "Select a type to search for subscribed events of a specific type.",
     ),
 };
 

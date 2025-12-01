@@ -6,13 +6,13 @@ export const ListContactsSchema = {
     .boolean()
     .optional()
     .describe(
-      "Send 'true' to fetch all contacts for all the agents from your JustCall account. Default value will be 'false'."
+      "Send 'true' to fetch all contacts for all the agents from your JustCall account. Default value will be 'false'.",
     ),
   agent_ids: z
     .array(z.number())
     .optional()
     .describe(
-      "Add a list of agent_ids to fetch contacts associated with multiple agents at once."
+      "Add a list of agent_ids to fetch contacts associated with multiple agents at once.",
     ),
   contact_number: z.string().optional().describe("Phone number of the contact"),
   first_name: z.string().optional().describe("First name of the contact"),
@@ -21,31 +21,31 @@ export const ListContactsSchema = {
     .array(z.enum(["blacklist", "dnd", "dnm"]))
     .optional()
     .describe(
-      "Status of the contact from among the following - Blacklist, DND, DNM"
+      "Status of the contact from among the following - Blacklist, DND, DNM",
     ),
   per_page: z
     .number()
     .optional()
     .describe(
-      "Number of contacts to be fetched per page. Default value is 50 and maximum value is 500."
+      "Number of contacts to be fetched per page. Default value is 50 and maximum value is 500.",
     ),
   page: z
     .number()
     .optional()
     .describe(
-      "Page number for which contacts are to be fetched. Page number '0' indicates first page containing records."
+      "Page number for which contacts are to be fetched. Page number '0' indicates first page containing records.",
     ),
   order: z
     .enum(["asc", "desc"])
     .optional()
     .describe(
-      "Order in which the contacts list should appear based on the 'id' of the contact. Recently added contacts are represented by larger 'id' values. Defaults to DESC (descending order)."
+      "Order in which the contacts list should appear based on the 'id' of the contact. Recently added contacts are represented by larger 'id' values. Defaults to DESC (descending order).",
     ),
   last_contact_id_fetched: z
     .number()
     .optional()
     .describe(
-      "Id of the last contact fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the `next_page_link` parameter."
+      "Id of the last contact fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the `next_page_link` parameter.",
     ),
 };
 
@@ -58,7 +58,7 @@ export const CreateContactSchema = {
       z.object({
         label: z.string(),
         number: z.string(),
-      })
+      }),
     )
     .optional()
     .describe("Other phone numbers associated with the contact"),
@@ -80,19 +80,19 @@ export const CreateContactSchema = {
     .boolean()
     .optional()
     .describe(
-      "Choose to add a contact for all agents or only for the account owner"
+      "Choose to add a contact for all agents or only for the account owner",
     ),
   agent_id: z
     .number()
     .optional()
     .describe(
-      "Specify the agent_id to create contact only for a specific agent"
+      "Specify the agent_id to create contact only for a specific agent",
     ),
   agent_ids: z
     .array(z.string())
     .optional()
     .describe(
-      "Specify the agent_ids to create contact only for a specific agents"
+      "Specify the agent_ids to create contact only for a specific agents",
     ),
 };
 
@@ -116,7 +116,7 @@ export const UpdateContactSchema = {
       z.object({
         label: z.string(),
         number: z.string(),
-      })
+      }),
     )
     .optional()
     .describe("Other phone numbers associated with the contact"),
@@ -134,7 +134,7 @@ export const UpdateContactSchema = {
     .array(
       z.object({
         note: z.string(),
-      })
+      }),
     )
     .optional()
     .describe("Additional notes for the contact"),
@@ -142,7 +142,7 @@ export const UpdateContactSchema = {
     .boolean()
     .optional()
     .describe(
-      "Choose to update a contact for all agents or only for the account owner"
+      "Choose to update a contact for all agents or only for the account owner",
     ),
 };
 
@@ -159,19 +159,19 @@ export const UpdateContactStatusSchema = {
     .array(z.enum(["blacklist", "dnd", "dnm"]))
     .optional()
     .describe(
-      "Add the phone number to one or more lists from DND, DNM and Blacklist"
+      "Add the phone number to one or more lists from DND, DNM and Blacklist",
     ),
   remove_from: z
     .array(z.enum(["blacklist", "dnd", "dnm"]))
     .optional()
     .describe(
-      "Remove the phone number from one or more lists from DND, DNM and Blacklist"
+      "Remove the phone number from one or more lists from DND, DNM and Blacklist",
     ),
   across_team: z
     .boolean()
     .optional()
     .describe(
-      "Choose to update a contact for all agents or only for the account owner"
+      "Choose to update a contact for all agents or only for the account owner",
     ),
 };
 
@@ -182,12 +182,54 @@ export const AddContactsBlacklistSchema = {
   add_to: z
     .array(z.enum(["blacklist", "dnd", "dnm"]))
     .describe(
-      "Add the contact numbers to one or more lists from DND, DNM and Blacklist"
+      "Add the contact numbers to one or more lists from DND, DNM and Blacklist",
     ),
   across_team: z
     .boolean()
     .optional()
     .describe(
-      "Choose to add contacts to specified lists for all agents or only for the account owner"
+      "Choose to add contacts to specified lists for all agents or only for the account owner",
+    ),
+};
+
+export const ListBlacklistContactsSchema = {
+  across_team: z
+    .boolean()
+    .optional()
+    .describe(
+      "Send 'true' to fetch all blacklist contacts for all the agents from your JustCall account. Default value will be 'false'.",
+    ),
+  contact_number: z.string().optional().describe("Phone number of the contact"),
+  first_name: z.string().optional().describe("First name of the contact"),
+  last_name: z.string().optional().describe("Last name of the contact"),
+  status: z
+    .array(z.enum(["blacklist", "dnd", "dnm"]))
+    .optional()
+    .describe(
+      "Status of the contact from among the following - Blacklist, DND, DNM",
+    ),
+  agent_ids: z
+    .array(z.number())
+    .optional()
+    .describe(
+      "Add a list of agent_ids to fetch blacklist contacts associated with multiple agents at once.",
+    ),
+  per_page: z
+    .number()
+    .optional()
+    .describe(
+      "Number of blacklist contacts to be fetched per page. Default value is 50 and maximum value is 500.",
+    ),
+  page: z
+    .number()
+    .optional()
+    .describe(
+      "Page number for which blacklist contacts are to be fetched. Page number '0' indicates first page containing records.",
+    ),
+  order: z
+    .enum(["asc", "desc"])
+    .optional()
+    .describe(
+      "Order in which the blacklist contacts list should appear based on the 'id' of the contact. Recently added blacklist contacts are represented by larger 'id' values. Defaults to DESC (descending order).",
     ),
 };

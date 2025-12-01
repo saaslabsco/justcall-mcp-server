@@ -6,31 +6,31 @@ export const ListSalesDialerCallsSchema = {
     .number()
     .optional()
     .describe(
-      "Campaign ID of the Campaign for which you wish to fetch the calls. You can find the Campaign ID in the Campaigns tab in your Sales Dialer account below the name of each Campaign. Please use only the numerical part as the ID."
+      "Campaign ID of the Campaign for which you wish to fetch the calls. You can find the Campaign ID in the Campaigns tab in your Sales Dialer account below the name of each Campaign. Please use only the numerical part as the ID.",
     ),
   fetch_ai_data: z
     .boolean()
     .optional()
     .describe(
-      "Set fetch_ai_data to true to fetch coaching data by Justcall AI. Default entry is false"
+      "Set fetch_ai_data to true to fetch coaching data by Justcall AI. Default entry is false",
     ),
   from_datetime: z
     .string()
     .optional()
     .describe(
-      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format starting from when the calls are to be fetched in user's timezone."
+      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format starting from when the calls are to be fetched in user's timezone.",
     ),
   to_datetime: z
     .string()
     .optional()
     .describe(
-      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format till when the calls are to be fetched in user's timezone."
+      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format till when the calls are to be fetched in user's timezone.",
     ),
   contact_number: z
     .number()
     .optional()
     .describe(
-      "Number of the contact for which calls are to be fetched. Important: Please provide a valid contact number with country code."
+      "Number of the contact for which calls are to be fetched. Important: Please provide a valid contact number with country code.",
     ),
   sales_dialer_number: z
     .number()
@@ -40,7 +40,7 @@ export const ListSalesDialerCallsSchema = {
     .number()
     .optional()
     .describe(
-      "ID of the agent for whom the calls are to be fetched. Agent ID can be accessed using List all users API."
+      "ID of the agent for whom the calls are to be fetched. Agent ID can be accessed using List all users API.",
     ),
   call_type: z
     .enum([
@@ -56,7 +56,7 @@ export const ListSalesDialerCallsSchema = {
     ])
     .optional()
     .describe(
-      "Enter the type of calls (answered, unanswered, abandoned) that need to be fetched."
+      "Enter the type of calls (answered, unanswered, abandoned) that need to be fetched.",
     ),
   page: z
     .number()
@@ -66,25 +66,25 @@ export const ListSalesDialerCallsSchema = {
     .number()
     .optional()
     .describe(
-      "Number of calls to be fetched per page. Default value is 20 and maximum value is 100."
+      "Number of calls to be fetched per page. Default value is 20 and maximum value is 100.",
     ),
   sort: z
     .enum(["id", "datetime"])
     .optional()
     .describe(
-      "Select a parameter to sort the order of calls. By default we apply sorting on id field."
+      "Select a parameter to sort the order of calls. By default we apply sorting on id field.",
     ),
   order: z
     .enum(["asc", "desc"])
     .optional()
     .describe(
-      "Order in which the calls list should appear based on the 'sort' parameter selected above"
+      "Order in which the calls list should appear based on the 'sort' parameter selected above",
     ),
   last_call_id_fetched: z
     .number()
     .optional()
     .describe(
-      "Id of the last call fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the 'next_page_link' parameter."
+      "Id of the last call fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the 'next_page_link' parameter.",
     ),
 };
 
@@ -94,6 +94,6 @@ export const GetSalesDialerCallSchema = {
     .boolean()
     .optional()
     .describe(
-      "Set fetch_ai_data to true to fetch coaching data by Justcall AI. Default entry is false."
+      "Set fetch_ai_data to true to fetch coaching data by Justcall AI. Default entry is false.",
     ),
 };

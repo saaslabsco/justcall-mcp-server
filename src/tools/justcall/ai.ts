@@ -26,7 +26,7 @@ export const registerAiTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Get Call AI Data Tool
@@ -43,7 +43,7 @@ export const registerAiTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // List Meetings AI Data Tool
@@ -60,7 +60,7 @@ export const registerAiTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Get Meeting AI Data Tool
@@ -77,6 +77,6 @@ export const registerAiTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 };

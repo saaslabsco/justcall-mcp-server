@@ -24,7 +24,7 @@ export const registerUserGroupTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Get User Group Tool
@@ -41,6 +41,6 @@ export const registerUserGroupTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 };

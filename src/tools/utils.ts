@@ -26,7 +26,7 @@ export function createErrorResponse(error: any): ToolResponse {
 }
 
 export function createToolHandler<T>(
-  handler: (params: T, context?: any) => Promise<any>
+  handler: (params: T, context?: any) => Promise<any>,
 ): (params: T, context?: any) => Promise<ToolResponse> {
   return async (params: T, context?: any) => {
     try {

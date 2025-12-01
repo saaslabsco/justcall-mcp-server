@@ -24,7 +24,7 @@ export const registerSalesDialerCallTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Get Sales Dialer Call Tool
@@ -41,6 +41,6 @@ export const registerSalesDialerCallTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 };

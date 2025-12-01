@@ -22,6 +22,6 @@ export const registerSalesDialerAnalyticsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 };

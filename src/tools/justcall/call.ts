@@ -28,7 +28,7 @@ export const registerCallTools = (server: McpServer) => {
         context, // Pass context for client identification
         ...params,
       });
-    })
+    }),
   );
 
   // Get Call Tool
@@ -46,7 +46,7 @@ export const registerCallTools = (server: McpServer) => {
         context, // Pass context for client identification
         ...params,
       });
-    })
+    }),
   );
 
   // Update Call Tool
@@ -61,7 +61,7 @@ export const registerCallTools = (server: McpServer) => {
         context, // Pass context for client identification
         ...params,
       });
-    })
+    }),
   );
 
   // Get Call Journey Tool
@@ -79,7 +79,7 @@ export const registerCallTools = (server: McpServer) => {
         context, // Pass context for client identification
         ...params,
       });
-    })
+    }),
   );
 
   // Get voice agent data
@@ -97,6 +97,6 @@ export const registerCallTools = (server: McpServer) => {
         context, // Pass context for client identification
         ...params,
       });
-    })
+    }),
   );
 };

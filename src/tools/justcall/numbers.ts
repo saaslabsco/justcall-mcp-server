@@ -22,7 +22,7 @@ export const registerNumberTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Get Number Tool
@@ -40,6 +40,6 @@ export const registerNumberTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 };

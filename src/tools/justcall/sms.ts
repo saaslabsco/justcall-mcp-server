@@ -31,7 +31,7 @@ export const registerSmsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // List SMS Tool
@@ -49,7 +49,7 @@ export const registerSmsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Get SMS Tool
@@ -67,7 +67,7 @@ export const registerSmsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Check SMS Reply Tool
@@ -85,7 +85,7 @@ export const registerSmsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // List SMS Tags Tool
@@ -103,7 +103,7 @@ export const registerSmsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Get SMS Tag Tool
@@ -121,7 +121,7 @@ export const registerSmsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Create SMS Tag Tool
@@ -136,7 +136,7 @@ export const registerSmsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Delete SMS Tag Tool
@@ -151,7 +151,7 @@ export const registerSmsTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // List SMS Threads Tool
@@ -168,7 +168,7 @@ export const registerSmsTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Get SMS Thread Tool
@@ -185,7 +185,7 @@ export const registerSmsTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Add Tag to Thread Tool
@@ -199,6 +199,6 @@ export const registerSmsTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 };

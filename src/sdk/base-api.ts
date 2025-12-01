@@ -60,7 +60,7 @@ export abstract class BaseApiService {
       method?: "GET" | "POST" | "PUT" | "DELETE";
       data?: any;
       context?: any; // MCP context for client identification
-    }
+    },
   ): Promise<T> {
     const method = options?.method || "GET";
     const httpOptions = {

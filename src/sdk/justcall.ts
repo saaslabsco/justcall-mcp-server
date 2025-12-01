@@ -55,6 +55,7 @@ import {
   GetCallAiDataDto,
   ListMeetingsAiDataDto,
   GetMeetingAiDataDto,
+  ListBlacklistContactsDto,
 } from "../dto/justcall/index.js";
 import { BaseApiService } from "./base-api.js";
 import axios from "axios";
@@ -68,7 +69,7 @@ export class JustCallApiService extends BaseApiService {
         headers: {
           "Content-Type": "application/json",
         },
-      })
+      }),
     );
   }
 
@@ -90,14 +91,17 @@ export class JustCallApiService extends BaseApiService {
     // Build query parameters
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        if (Array.isArray(value)) {
-          acc[key] = value;
-        } else {
-          acc[key] = value.toString();
-        }
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          if (Array.isArray(value)) {
+            acc[key] = value;
+          } else {
+            acc[key] = value.toString();
+          }
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/calls`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -110,10 +114,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/calls/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -149,10 +156,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/users`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -188,14 +198,16 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/contacts`;
     const headers = this.getAuthHeaders(authToken as string);
-
     return this.executeApiCall(url, { params, headers, context });
   }
 
@@ -261,6 +273,24 @@ export class JustCallApiService extends BaseApiService {
       data: requestBody,
     });
   }
+  listBlacklistContacts(
+    dto: ListBlacklistContactsDto & { context?: any },
+  ): Promise<any> {
+    const { companyId, authToken, context, ...queryParams } = dto;
+
+    const params = Object.entries(queryParams)
+      .filter(([_, value]) => value !== undefined && value !== null)
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
+    const url = `/v2.1/contacts/blacklist`;
+    const headers = this.getAuthHeaders(authToken as string);
+    return this.executeApiCall(url, { params, headers, context });
+  }
 
   // SMS/Text Messages Endpoints
   listSms(dto: ListSmsDto & { context?: any }): Promise<any> {
@@ -268,10 +298,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/texts`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -322,10 +355,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/phone-numbers`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -349,10 +385,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/webhooks`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -385,10 +424,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/texts/tags`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -438,10 +480,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/texts/threads`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -454,10 +499,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/texts/threads/${thread_id}`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -496,16 +544,19 @@ export class JustCallApiService extends BaseApiService {
 
   // Agent Analytics Endpoints
   getAgentAnalytics(
-    dto: GetAgentAnalyticsDto & { context?: any }
+    dto: GetAgentAnalyticsDto & { context?: any },
   ): Promise<any> {
     const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value;
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value;
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/calls/analytics/agent`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -523,16 +574,19 @@ export class JustCallApiService extends BaseApiService {
    * @returns Promise<any>
    */
   getAccountAnalytics(
-    dto: GetAccountAnalyticsDto & { context?: any }
+    dto: GetAccountAnalyticsDto & { context?: any },
   ): Promise<any> {
     const { authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value;
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value;
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/calls/analytics/account`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -541,16 +595,19 @@ export class JustCallApiService extends BaseApiService {
   }
 
   getNumberAnalytics(
-    dto: GetNumberAnalyticsDto & { context?: any }
+    dto: GetNumberAnalyticsDto & { context?: any },
   ): Promise<any> {
     const { authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value;
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value;
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/calls/analytics/number`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -578,10 +635,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/voice-agents/list`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -590,7 +650,7 @@ export class JustCallApiService extends BaseApiService {
   }
 
   initiateVoiceAgentCall(
-    dto: InitiateVoiceAgentCallDto & { context?: any }
+    dto: InitiateVoiceAgentCallDto & { context?: any },
   ): Promise<any> {
     const { companyId, authToken, context, ...requestBody } = dto;
 
@@ -611,10 +671,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/user_groups`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -637,10 +700,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/appointments/available-slots`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -676,14 +742,17 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        if (Array.isArray(value)) {
-          acc[key] = value;
-        } else {
-          acc[key] = value.toString();
-        }
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          if (Array.isArray(value)) {
+            acc[key] = value;
+          } else {
+            acc[key] = value.toString();
+          }
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/whatsapp/messages`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -696,10 +765,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/whatsapp/messages/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -725,10 +797,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/whatsapp/messages/templates`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -741,10 +816,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/whatsapp/messages/check-reply`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -758,16 +836,19 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        if (typeof value === "boolean") {
-          acc[key] = value.toString();
-        } else if (Array.isArray(value)) {
-          acc[key] = value;
-        } else {
-          acc[key] = value.toString();
-        }
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          if (typeof value === "boolean") {
+            acc[key] = value.toString();
+          } else if (Array.isArray(value)) {
+            acc[key] = value;
+          } else {
+            acc[key] = value.toString();
+          }
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/calls_ai`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -780,14 +861,17 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        if (typeof value === "boolean") {
-          acc[key] = value.toString();
-        } else {
-          acc[key] = value.toString();
-        }
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          if (typeof value === "boolean") {
+            acc[key] = value.toString();
+          } else {
+            acc[key] = value.toString();
+          }
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/calls_ai/${id}`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -800,16 +884,19 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        if (typeof value === "boolean") {
-          acc[key] = value.toString();
-        } else if (Array.isArray(value)) {
-          acc[key] = value;
-        } else {
-          acc[key] = value.toString();
-        }
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          if (typeof value === "boolean") {
+            acc[key] = value.toString();
+          } else if (Array.isArray(value)) {
+            acc[key] = value;
+          } else {
+            acc[key] = value.toString();
+          }
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/meetings_ai`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -822,10 +909,13 @@ export class JustCallApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = String(value);
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = String(value);
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/meetings_ai/${instance_sid}`;
     const headers = this.getAuthHeaders(authToken as string);

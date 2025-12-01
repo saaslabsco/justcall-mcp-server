@@ -6,13 +6,13 @@ export const ListNumbersSchema = {
     .string()
     .optional()
     .describe(
-      "Search for the number details using the name of the JustCall phone line set by you for this number"
+      "Search for the number details using the name of the JustCall phone line set by you for this number",
     ),
   availability_setting: z
     .enum(["Always Open", "Always Closed", "Custom Hours"])
     .optional()
     .describe(
-      "Get a list of phone numbers set to the same type of Business Hours setting in JustCall"
+      "Get a list of phone numbers set to the same type of Business Hours setting in JustCall",
     ),
   number_type: z
     .enum(["local", "mobile", "toll_free"])
@@ -39,7 +39,7 @@ export const ListNumbersSchema = {
     .number()
     .optional()
     .describe(
-      "Count of phone number records to be fetched per page. Default value is 30 and maximum value is 100."
+      "Count of phone number records to be fetched per page. Default value is 30 and maximum value is 100.",
     ),
   order: z
     .enum(["ASC", "DESC"])

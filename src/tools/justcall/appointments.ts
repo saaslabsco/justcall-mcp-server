@@ -25,7 +25,7 @@ export const registerAppointmentTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Create Appointment Tool
@@ -39,7 +39,7 @@ export const registerAppointmentTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Get Appointment Tool
@@ -56,6 +56,6 @@ export const registerAppointmentTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 };

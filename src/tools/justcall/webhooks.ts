@@ -22,7 +22,7 @@ export const registerWebhookTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 
   // Create Webhook Tool
@@ -37,6 +37,6 @@ export const registerWebhookTools = (server: McpServer) => {
         context,
         ...params,
       });
-    })
+    }),
   );
 };

@@ -31,7 +31,7 @@ export class SalesDialerApiService extends BaseApiService {
         headers: {
           "Content-Type": "application/json",
         },
-      })
+      }),
     );
   }
 
@@ -48,20 +48,23 @@ export class SalesDialerApiService extends BaseApiService {
 
   // Sales Dialer Analytics Endpoint
   getSalesDialerAnalytics(
-    dto: GetSalesDialerAnalyticsDto & { context?: any }
+    dto: GetSalesDialerAnalyticsDto & { context?: any },
   ): Promise<any> {
     const { companyId, authToken, context, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        if (Array.isArray(value)) {
-          acc[key] = value;
-        } else {
-          acc[key] = value.toString();
-        }
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          if (Array.isArray(value)) {
+            acc[key] = value;
+          } else {
+            acc[key] = value.toString();
+          }
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/sales_dialer/analytics`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -75,10 +78,13 @@ export class SalesDialerApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/sales_dialer/campaigns`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -129,10 +135,13 @@ export class SalesDialerApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/sales_dialer/campaigns/contacts`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -159,10 +168,13 @@ export class SalesDialerApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/sales_dialer/contacts`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -219,7 +231,7 @@ export class SalesDialerApiService extends BaseApiService {
   }
 
   importSalesDialerContactsStatus(
-    dto: ImportSalesDialerContactsStatusDto
+    dto: ImportSalesDialerContactsStatusDto,
   ): Promise<any> {
     const { companyId, authToken, batch_id } = dto;
 
@@ -243,16 +255,19 @@ export class SalesDialerApiService extends BaseApiService {
   }
 
   listSalesDialerCustomFields(
-    dto: ListSalesDialerCustomFieldsDto
+    dto: ListSalesDialerCustomFieldsDto,
   ): Promise<any> {
     const { companyId, authToken, ...queryParams } = dto;
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value.toString();
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/sales_dialer/contacts/custom-fields`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -266,14 +281,17 @@ export class SalesDialerApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        if (typeof value === "boolean") {
-          acc[key] = value.toString();
-        } else {
-          acc[key] = value.toString();
-        }
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          if (typeof value === "boolean") {
+            acc[key] = value.toString();
+          } else {
+            acc[key] = value.toString();
+          }
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/sales_dialer/calls`;
     const headers = this.getAuthHeaders(authToken as string);
@@ -286,10 +304,13 @@ export class SalesDialerApiService extends BaseApiService {
 
     const params = Object.entries(queryParams)
       .filter(([_, value]) => value !== undefined && value !== null)
-      .reduce((acc, [key, value]) => {
-        acc[key] = String(value);
-        return acc;
-      }, {} as Record<string, any>);
+      .reduce(
+        (acc, [key, value]) => {
+          acc[key] = String(value);
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
     const url = `/v2.1/sales_dialer/calls/${id}`;
     const headers = this.getAuthHeaders(authToken as string);

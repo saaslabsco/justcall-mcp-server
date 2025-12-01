@@ -27,7 +27,7 @@ export const registerWhatsAppTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Get WhatsApp Message Tool
@@ -44,7 +44,7 @@ export const registerWhatsAppTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Send WhatsApp Message Tool
@@ -58,7 +58,7 @@ export const registerWhatsAppTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // List WhatsApp Templates Tool
@@ -75,7 +75,7 @@ export const registerWhatsAppTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Check WhatsApp Reply Tool
@@ -92,6 +92,6 @@ export const registerWhatsAppTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 };

@@ -6,55 +6,55 @@ export const ListWhatsAppMessagesSchema = {
     .boolean()
     .optional()
     .describe(
-      'Set fetch_template_data to true to fetch template name, category and other template specific data. Default value is "false".'
+      'Set fetch_template_data to true to fetch template name, category and other template specific data. Default value is "false".',
     ),
   from_datetime: z
     .string()
     .optional()
     .describe(
-      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format starting from when the messages are to be fetched."
+      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format starting from when the messages are to be fetched.",
     ),
   to_datetime: z
     .string()
     .optional()
     .describe(
-      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format till when the messages are to be fetched."
+      "Datetime in yyyy-mm-dd hh:mm:ss or yyyy-mm-dd format till when the messages are to be fetched.",
     ),
   last_message_id_fetched: z
     .number()
     .optional()
     .describe(
-      "Id of the last WhatsApp message fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the 'next_page_link' parameter."
+      "Id of the last WhatsApp message fetched in the previous query. This Id ensures that you won't receive any duplicate data when using the 'next_page_link' parameter.",
     ),
   contact_number: z
     .string()
     .optional()
     .describe(
-      "Number of the contact for which messages are to be fetched. Please follow the E.164 number format."
+      "Number of the contact for which messages are to be fetched. Please follow the E.164 number format.",
     ),
   justcall_number: z
     .string()
     .optional()
     .describe(
-      "JustCall number for which the messages are to be fetched. Please follow the E.164 number format."
+      "JustCall number for which the messages are to be fetched. Please follow the E.164 number format.",
     ),
   message_direction: z
     .enum(["incoming", "outgoing"])
     .optional()
     .describe(
-      "Enter the direction of the message to be fetched. Note: Filtering on message_direction requires at least one from justcall_number or contact_number to be sent in the API request."
+      "Enter the direction of the message to be fetched. Note: Filtering on message_direction requires at least one from justcall_number or contact_number to be sent in the API request.",
     ),
   message_content: z
     .string()
     .optional()
     .describe(
-      "If WhatsApp messages with specific keywords or phrases are to be fetched, enter the keywords in this field. Enter a minimum of 3 and maximum of 15 characters. Note: Filtering on message_content requires at least one from justcall_number or contact_number to be sent in the API request."
+      "If WhatsApp messages with specific keywords or phrases are to be fetched, enter the keywords in this field. Enter a minimum of 3 and maximum of 15 characters. Note: Filtering on message_content requires at least one from justcall_number or contact_number to be sent in the API request.",
     ),
   delivery_status: z
     .enum(["read", "delivered", "sent", "received", "failed"])
     .optional()
     .describe(
-      "Fetch all the messages basis of the delivery status. Note: Filtering on delivery_status requires at least one from justcall_number or contact_number to be sent in the API request."
+      "Fetch all the messages basis of the delivery status. Note: Filtering on delivery_status requires at least one from justcall_number or contact_number to be sent in the API request.",
     ),
   page: z
     .number()
@@ -64,13 +64,13 @@ export const ListWhatsAppMessagesSchema = {
     .number()
     .optional()
     .describe(
-      "Number of WhatsApp messages to be fetched per page. Default value is 30 and maximum value is 50."
+      "Number of WhatsApp messages to be fetched per page. Default value is 30 and maximum value is 50.",
     ),
   order: z
     .enum(["asc", "desc"])
     .optional()
     .describe(
-      "Order in which the WhatsApp message list should appear based on 'Date created' for the message."
+      "Order in which the WhatsApp message list should appear based on 'Date created' for the message.",
     ),
 };
 
@@ -82,7 +82,7 @@ export const GetWhatsAppMessageSchema = {
     .boolean()
     .optional()
     .describe(
-      'Set fetch_template_data to true to fetch template name, category and other template specific data. Default value is "false".'
+      'Set fetch_template_data to true to fetch template name, category and other template specific data. Default value is "false".',
     ),
 };
 
@@ -90,7 +90,7 @@ export const SendWhatsAppMessageSchema = {
   justcall_number: z
     .string()
     .describe(
-      "JustCall WhatsApp integrated number. Please follow the E.164 number format."
+      "JustCall WhatsApp integrated number. Please follow the E.164 number format.",
     ),
   contact_number: z
     .string()
@@ -99,13 +99,13 @@ export const SendWhatsAppMessageSchema = {
     .string()
     .optional()
     .describe(
-      "Content of the WhatsApp message. Maximum character limit is 4000."
+      "Content of the WhatsApp message. Maximum character limit is 4000.",
     ),
   media_url: z
     .string()
     .optional()
     .describe(
-      "Add URL of the media file to be sent with the message. Only one file is supported with a message."
+      "Add URL of the media file to be sent with the message. Only one file is supported with a message.",
     ),
   media_file_name: z
     .string()
@@ -115,7 +115,7 @@ export const SendWhatsAppMessageSchema = {
     .enum(["Yes", "No"])
     .optional()
     .describe(
-      "No - default. Yes - prevents you from sending the same message to the same receiver in past 24 hours"
+      "No - default. Yes - prevents you from sending the same message to the same receiver in past 24 hours",
     ),
   template_id: z.number().optional().describe("Id of the approved template."),
   template_variables: z
@@ -128,7 +128,7 @@ export const ListWhatsAppTemplatesSchema = {
   justcall_number: z
     .string()
     .describe(
-      "JustCall WhatsApp integrated number. Please follow the E.164 number format."
+      "JustCall WhatsApp integrated number. Please follow the E.164 number format.",
     ),
   template_name: z.string().optional().describe("Name of the template used."),
   language: z
@@ -163,13 +163,13 @@ export const ListWhatsAppTemplatesSchema = {
     .number()
     .optional()
     .describe(
-      "Number of templates to be fetched per page. Default value is 50 and maximum value is 250."
+      "Number of templates to be fetched per page. Default value is 50 and maximum value is 250.",
     ),
   order: z
     .enum(["asc", "desc"])
     .optional()
     .describe(
-      "Order in which the WhatsApp templated list should appear based on 'Date created' for the template."
+      "Order in which the WhatsApp templated list should appear based on 'Date created' for the template.",
     ),
 };
 
@@ -177,7 +177,7 @@ export const CheckWhatsAppReplySchema = {
   justcall_number: z
     .string()
     .describe(
-      "JustCall WhatsApp integrated number. Please follow the E.164 number format."
+      "JustCall WhatsApp integrated number. Please follow the E.164 number format.",
     ),
   contact_number: z
     .string()

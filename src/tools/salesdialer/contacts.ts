@@ -30,7 +30,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Get Sales Dialer Contact Tool
@@ -47,7 +47,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Create Sales Dialer Contact Tool
@@ -61,7 +61,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Update Sales Dialer Contact Tool
@@ -75,7 +75,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Import Sales Dialer Contacts Tool
@@ -89,7 +89,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Import Sales Dialer Contacts Status Tool
@@ -106,7 +106,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // Add Sales Dialer Contacts DNCA Tool
@@ -120,7 +120,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 
   // List Sales Dialer Custom Fields Tool
@@ -137,6 +137,6 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
         authToken,
         ...params,
       });
-    })
+    }),
   );
 };

@@ -1,5 +1,21 @@
 # @justcall/mcp-server
 
+## 1.2.0
+
+### Minor Changes
+
+- feat: add support for open ai apps sdk
+
+  - Add OpenAI Apps SDK widget metadata to call tools (list_calls, get_call)
+  - Register UI widget resources for calls list and call details views
+  - Add HTML widget templates for displaying call data
+  - Update tool handlers to support OpenAI widget output templates
+  - Add TypeScript declarations for HTML module imports
+  - Enhance utils to support widget-aware tool responses
+
+  This enables rich UI widgets in OpenAI Apps when using JustCall MCP tools,
+  allowing users to view call data in interactive, formatted interfaces.
+
 ## 1.1.1
 
 ### Patch Changes

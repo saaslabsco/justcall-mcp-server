@@ -65,6 +65,14 @@ export default {
       });
     }
 
+    // OpenAI Apps challenge endpoint
+    if (url.pathname === "/.well-known/openai-apps-challenge") {
+      return new Response("QxcqWz55XnIDtWskb6Kiz_Vc_4136AGZPDrZHZJURKE", {
+        status: 200,
+        headers: { "Content-Type": "text/plain" },
+      });
+    }
+
     return new Response("Not found", { status: 404 });
   },
 };

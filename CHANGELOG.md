@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 1.2.1
+
+### Patch Changes
+
+- 14dd998: Fix CSP error for JustCall domains in Open AI Apps SDK
+
 ## 1.2.0
 
 ### Minor Changes

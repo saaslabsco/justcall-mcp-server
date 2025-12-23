@@ -58,6 +58,13 @@ export const registerCallTools = (server: McpServer) => {
       text: "Calls list",
       _meta: {
         "openai/outputTemplate": "ui://widget/calls-list.html",
+        "openai/widgetCSP": {
+          connect_domains: ["https://app.justcall.io"],
+          resource_domains: ["https://cdn.justcall.io"],
+          redirect_domains: ["https://app.justcall.io"],
+        },
+        "openai/widgetDomain": "https://mcp.justcall.host",
+        "openai/widgetDescription": "Shows the list of calls",
       },
     },
     (
@@ -87,6 +94,13 @@ export const registerCallTools = (server: McpServer) => {
       text: "Calls Get",
       _meta: {
         "openai/outputTemplate": "ui://widget/calls-get.html",
+        "openai/widgetCSP": {
+          connect_domains: ["https://app.justcall.io"],
+          resource_domains: ["https://cdn.justcall.io"],
+          redirect_domains: ["https://app.justcall.io"],
+        },
+        "openai/widgetDomain": "https://mcp.justcall.host",
+        "openai/widgetDescription": "Shows the details of a call",
       },
     },
     (

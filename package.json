@@ -43,7 +43,7 @@
     "dist/**/*.d.ts.map"
   ],
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.24.0",
+    "@modelcontextprotocol/sdk": "^1.25.2",
     "agents": "^0.2.8",
     "axios": "^1.12.2",
     "dotenv": "^16.4.7",

@@ -58,7 +58,7 @@
     "ts-jest": "^29.3.1",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3",
-    "wrangler": "^4.42.0"
+    "wrangler": "^4.59.1"
   },
   "packageManager": "pnpm@10.18.1"
 }

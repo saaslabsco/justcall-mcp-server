@@ -44,7 +44,7 @@
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.2",
-    "agents": "^0.2.8",
+    "agents": "^0.3.7",
     "axios": "^1.12.2",
     "dotenv": "^16.4.7",
     "rxjs": "^7.8.2",

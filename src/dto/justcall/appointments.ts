@@ -20,5 +20,5 @@ export interface CreateAppointmentDto extends BaseJustCallDto {
 }
 
 export interface GetAppointmentDto extends BaseJustCallDto {
-  id: number;
+  id: string;
 }

@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 1.2.2
+
+### Patch Changes
+
+- IN-8258 | Added fixes for changes in Get Appointment Id from Number to String
+
 ## 1.2.1
 
 ### Patch Changes

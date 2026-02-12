@@ -46,5 +46,9 @@ export const CreateAppointmentSchema = {
 };
 
 export const GetAppointmentSchema = {
-  id: z.number().describe("Unique identifier of the appointment"),
+  id: z
+    .string()
+    .describe(
+      "Unique identifier of the appointment (use the entire id string, e.g. 698d856d1aXXefXXXc47194c)",
+    ),
 };

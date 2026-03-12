@@ -14,6 +14,7 @@ export const registerWebhookTools = (server: McpServer) => {
     ListWebhooksSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -30,6 +31,9 @@ export const registerWebhookTools = (server: McpServer) => {
     "create_webhook",
     "Create a new webhook endpoint to receive real-time notifications",
     CreateWebhookSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.createWebhook({

@@ -18,6 +18,7 @@ export const registerUserTools = (server: McpServer) => {
     ListUsersSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -36,6 +37,7 @@ export const registerUserTools = (server: McpServer) => {
     GetUserSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -52,6 +54,9 @@ export const registerUserTools = (server: McpServer) => {
     "update_user_availability",
     "Update a user's availability status in JustCall to available or unavailable for calls",
     UpdateUserAvailabilitySchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.updateUserAvailability({

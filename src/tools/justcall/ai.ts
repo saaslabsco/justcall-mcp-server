@@ -19,6 +19,7 @@ export const registerAiTools = (server: McpServer) => {
     ListCallsAiDataSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -36,6 +37,7 @@ export const registerAiTools = (server: McpServer) => {
     GetCallAiDataSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -53,6 +55,7 @@ export const registerAiTools = (server: McpServer) => {
     ListMeetingsAiDataSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -70,6 +73,7 @@ export const registerAiTools = (server: McpServer) => {
     GetMeetingAiDataSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

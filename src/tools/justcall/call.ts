@@ -30,6 +30,7 @@ export const registerCallTools = (server: McpServer) => {
       inputSchema: ListCallsSchema,
       annotations: {
         readOnlyHint: true,
+        destructiveHint: false,
       },
       _meta: {
         "openai/outputTemplate": "ui://widget/calls-list.html",
@@ -53,9 +54,7 @@ export const registerCallTools = (server: McpServer) => {
     "calls_list_widget",
     "ui://widget/calls-list.html",
     {
-      uri: "ui://widget/calls-list.html",
       mimeType: "text/html+skybridge",
-      text: "Calls list",
       _meta: {
         "openai/outputTemplate": "ui://widget/calls-list.html",
         "openai/widgetCSP": {
@@ -89,9 +88,7 @@ export const registerCallTools = (server: McpServer) => {
     "call_get_widget",
     "ui://widget/calls-get.html",
     {
-      uri: "ui://widget/calls-get.html",
       mimeType: "text/html+skybridge",
-      text: "Calls Get",
       _meta: {
         "openai/outputTemplate": "ui://widget/calls-get.html",
         "openai/widgetCSP": {
@@ -131,6 +128,7 @@ export const registerCallTools = (server: McpServer) => {
       inputSchema: GetCallSchema,
       annotations: {
         readOnlyHint: true,
+        destructiveHint: false,
       },
       _meta: {
         "openai/outputTemplate": "ui://widget/calls-get.html",
@@ -155,6 +153,9 @@ export const registerCallTools = (server: McpServer) => {
     "update_call",
     "Update/modify details of an existing call record identified by Call ID",
     UpdateCallSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.updateCall({
@@ -172,6 +173,7 @@ export const registerCallTools = (server: McpServer) => {
     GetCallJourneySchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -190,6 +192,7 @@ export const registerCallTools = (server: McpServer) => {
     GetVoiceAgentSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

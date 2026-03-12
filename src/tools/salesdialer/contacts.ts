@@ -23,6 +23,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     ListSalesDialerContactsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -40,6 +41,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     GetSalesDialerContactSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -55,6 +57,9 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     "create_salesdialer_contact",
     "Create a new contact in Sales Dialer",
     CreateSalesDialerContactSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.createSalesDialerContact({
@@ -69,6 +74,9 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     "update_salesdialer_contact",
     "Update/modify details of an existing contact in Sales Dialer identified by ID",
     UpdateSalesDialerContactSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.updateSalesDialerContact({
@@ -83,6 +91,9 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     "import_salesdialer_contacts",
     "Import multiple contacts into Sales Dialer or a campaign in bulk",
     ImportSalesDialerContactsSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.importSalesDialerContacts({
@@ -99,6 +110,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     ImportSalesDialerContactsStatusSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -114,6 +126,9 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     "add_salesdialer_contacts_dnca",
     'Add one or more contacts to the Sales Dialer\'s "Do Not Call Again" list in bulk',
     AddSalesDialerContactsDncaSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.addSalesDialerContactsDnca({
@@ -130,6 +145,7 @@ export const registerSalesDialerContactTools = (server: McpServer) => {
     ListSalesDialerCustomFieldsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

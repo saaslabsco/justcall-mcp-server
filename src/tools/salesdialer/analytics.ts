@@ -14,6 +14,7 @@ export const registerSalesDialerAnalyticsTools = (server: McpServer) => {
     GetSalesDialerAnalyticsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

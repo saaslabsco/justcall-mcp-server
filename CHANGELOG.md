@@ -1,5 +1,11 @@
 # @justcall/mcp-server
 
+## 1.2.3
+
+### Patch Changes
+
+- Fix destructive hints returned by the MCP server
+
 ## 1.2.2
 
 ### Patch Changes

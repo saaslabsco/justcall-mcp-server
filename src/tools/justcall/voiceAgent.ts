@@ -17,6 +17,7 @@ export const registerVoiceAgentTools = (server: McpServer) => {
     ListVoiceAgentsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -33,6 +34,9 @@ export const registerVoiceAgentTools = (server: McpServer) => {
     "create_voice_agent_call",
     "Initiate an outbound call from a configured AI voice agent to a contact number",
     InitiateVoiceAgentCallSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.initiateVoiceAgentCall({

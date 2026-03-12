@@ -20,6 +20,7 @@ export const registerWhatsAppTools = (server: McpServer) => {
     ListWhatsAppMessagesSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -37,6 +38,7 @@ export const registerWhatsAppTools = (server: McpServer) => {
     GetWhatsAppMessageSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -52,6 +54,9 @@ export const registerWhatsAppTools = (server: McpServer) => {
     "send_whatsapp_message",
     "Send a new whatsapp message to a contact number",
     SendWhatsAppMessageSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.sendWhatsAppMessage({
@@ -68,6 +73,7 @@ export const registerWhatsAppTools = (server: McpServer) => {
     ListWhatsAppTemplatesSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -85,6 +91,7 @@ export const registerWhatsAppTools = (server: McpServer) => {
     CheckWhatsAppReplySchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

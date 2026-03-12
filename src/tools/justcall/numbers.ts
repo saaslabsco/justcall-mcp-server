@@ -14,6 +14,7 @@ export const registerNumberTools = (server: McpServer) => {
     ListNumbersSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -32,6 +33,7 @@ export const registerNumberTools = (server: McpServer) => {
     GetNumberSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

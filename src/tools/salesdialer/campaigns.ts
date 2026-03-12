@@ -21,6 +21,7 @@ export const registerCampaignTools = (server: McpServer) => {
     ListCampaignsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -39,6 +40,7 @@ export const registerCampaignTools = (server: McpServer) => {
     GetCampaignSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -55,6 +57,9 @@ export const registerCampaignTools = (server: McpServer) => {
     "create_salesdialer_campaign",
     "Create a new Sales Dialer campaign in the JustCall account",
     CreateCampaignSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.createCampaign({
@@ -70,6 +75,9 @@ export const registerCampaignTools = (server: McpServer) => {
     "update_salesdialer_campaign",
     "Update/modify details of an existing Sales Dialer campaign in the JustCall account",
     UpdateCampaignSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.updateCampaign({
@@ -87,6 +95,7 @@ export const registerCampaignTools = (server: McpServer) => {
     ListCampaignContactsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -102,6 +111,9 @@ export const registerCampaignTools = (server: McpServer) => {
     "add_salesdialer_campaign_contact",
     "Add contact to a specific Sales Dialer campaign identified by Campaign ID",
     AddContactToCampaignSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return salesdialerAPIservice.addContactToCampaign({

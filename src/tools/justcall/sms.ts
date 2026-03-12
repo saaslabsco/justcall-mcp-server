@@ -24,6 +24,9 @@ export const registerSmsTools = (server: McpServer) => {
     "send_sms_mms",
     "Send a new sms or text message or mms to a contact number",
     SendSmsSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.sendSms({
@@ -41,6 +44,7 @@ export const registerSmsTools = (server: McpServer) => {
     ListSmsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -59,6 +63,7 @@ export const registerSmsTools = (server: McpServer) => {
     GetSmsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -77,6 +82,7 @@ export const registerSmsTools = (server: McpServer) => {
     CheckSmsReplySchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -95,6 +101,7 @@ export const registerSmsTools = (server: McpServer) => {
     ListSmsTagsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -113,6 +120,7 @@ export const registerSmsTools = (server: McpServer) => {
     GetSmsTagSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -129,6 +137,9 @@ export const registerSmsTools = (server: McpServer) => {
     "create_sms_tag",
     "Create a new sms tag in the JustCall account for tagging conversations",
     CreateSmsTagSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.createSmsTag({
@@ -144,6 +155,9 @@ export const registerSmsTools = (server: McpServer) => {
     "delete_sms_tag",
     "Delete a specific sms tag by ID",
     DeleteSmsTagSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.deleteSmsTag({
@@ -161,6 +175,7 @@ export const registerSmsTools = (server: McpServer) => {
     ListSmsThreadsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -178,6 +193,7 @@ export const registerSmsTools = (server: McpServer) => {
     GetSmsThreadSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -193,6 +209,9 @@ export const registerSmsTools = (server: McpServer) => {
     "add_sms_thread_thread",
     "Add tag to a sms thread/conversation identified by thread ID or combination of contact number and JustCall number",
     AddTagToThreadSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.addTagToThread({

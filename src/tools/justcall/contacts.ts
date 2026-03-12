@@ -22,6 +22,7 @@ export const registerContactTools = (server: McpServer) => {
     ListContactsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -40,6 +41,7 @@ export const registerContactTools = (server: McpServer) => {
     GetContactSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -55,6 +57,9 @@ export const registerContactTools = (server: McpServer) => {
     "create_contact",
     "Create a new contact in the JustCall account",
     CreateContactSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.createContact({
@@ -70,6 +75,9 @@ export const registerContactTools = (server: McpServer) => {
     "update_contact",
     "Update/modify details of an existing contact in the JustCall account",
     UpdateContactSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.updateContact({
@@ -84,6 +92,9 @@ export const registerContactTools = (server: McpServer) => {
     "update_contact_status",
     "Add or remove a contact from DND/DNM/Blacklist lists in the JustCall account",
     UpdateContactStatusSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.updateContactStatus({
@@ -98,6 +109,9 @@ export const registerContactTools = (server: McpServer) => {
     "add_contacts_blacklist",
     "Add one or more contacts to the JustCall account's global blacklist in bulk",
     AddContactsBlacklistSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.addContactsBlacklist({
@@ -114,6 +128,7 @@ export const registerContactTools = (server: McpServer) => {
     ListBlacklistContactsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

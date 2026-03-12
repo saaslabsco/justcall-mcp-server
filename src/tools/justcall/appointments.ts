@@ -18,6 +18,7 @@ export const registerAppointmentTools = (server: McpServer) => {
     ListAppointmentSlotsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -33,6 +34,9 @@ export const registerAppointmentTools = (server: McpServer) => {
     "create_appointment",
     "Schedule a new appointment on a specific JustCall calendar",
     CreateAppointmentSchema,
+    {
+      destructiveHint: true,
+    },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
       return justcallAPIservice.createAppointment({
@@ -49,6 +53,7 @@ export const registerAppointmentTools = (server: McpServer) => {
     GetAppointmentSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

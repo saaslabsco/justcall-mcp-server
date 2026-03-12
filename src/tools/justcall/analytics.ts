@@ -18,6 +18,7 @@ export const registerAnalyticsTools = (server: McpServer) => {
     GetAgentAnalyticsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -36,6 +37,7 @@ export const registerAnalyticsTools = (server: McpServer) => {
     GetAccountAnalyticsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -54,6 +56,7 @@ export const registerAnalyticsTools = (server: McpServer) => {
     GetNumberAnalyticsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

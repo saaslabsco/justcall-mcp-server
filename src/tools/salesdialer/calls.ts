@@ -17,6 +17,7 @@ export const registerSalesDialerCallTools = (server: McpServer) => {
     ListSalesDialerCallsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -34,6 +35,7 @@ export const registerSalesDialerCallTools = (server: McpServer) => {
     GetSalesDialerCallSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);

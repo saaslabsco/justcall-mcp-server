@@ -17,6 +17,7 @@ export const registerUserGroupTools = (server: McpServer) => {
     ListUserGroupsSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
@@ -34,6 +35,7 @@ export const registerUserGroupTools = (server: McpServer) => {
     GetUserGroupSchema,
     {
       readOnlyHint: true,
+      destructiveHint: false,
     },
     createToolHandler(async (params, context) => {
       const authToken = getAuthToken(context);
